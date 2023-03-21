@@ -2,7 +2,13 @@
 ## Introduction
 This will act as the starting point for future singleCell nextflow pipelines. The thought is to develop each module to work independetly so that they will all we interchangeable in the end. 
 
-
+## Roadmap
+Status of different analysises.
+- [X] 10X Gene Expression
+- [ ] 10X Feature Barcode
+- [ ] 10X Flex
+- [ ] 10X VDJ
+- [ ] ParseBioscience
 ## Required inputs
 
 * SampleSheet as formated in [the examples](/examples/CTG_SampleSheet.csv) with the following columns:

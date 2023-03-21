@@ -1,11 +1,11 @@
-# 10X illumina pipeline
+# CTG singleCellWorkflows
 ## Introduction
-This will act as the starting point for future 10x nextflow pipelines. The thought is to develop each module to work independetly so that they will all we interchangeable in the end. 
+This will act as the starting point for future singleCell nextflow pipelines. The thought is to develop each module to work independetly so that they will all we interchangeable in the end. 
 
 
 ## Required inputs
 
-* SampleSheet as formated in [the examples](/sc-rna-10x-dsl2/examples/samplesheet.csv) with the following columns:
+* SampleSheet as formated in [the examples](/sc-rna-10x-dsl2/examples/CTG_SampleSheet.csv) with the following columns:
   * Sample_ID - Identifier of a project, must be the same as the file names of the fastq files.
   * Sample_Species - *human* or *mouse*
   * Sample_Project - What project a sample is associated with

@@ -3,7 +3,7 @@
 This will act as the starting point for future singleCell nextflow pipelines. The thought is to develop each module to work independetly so that they will all we interchangeable in the end. 
 
 ## Roadmap
-Status of different analysises.
+Stability of different analysises.
 - [X] 10X Gene Expression
 - [ ] 10X Feature Barcode
 - [ ] 10X Flex
@@ -17,6 +17,10 @@ Status of different analysises.
   * Sample_Project - What project a sample is associated with
   * force - If cellranger count should force the number of cells, 99% of the cases should be left as 'n', otherwise specify it as an integer.
   * agg - If all samples should be aggregated, `cellranger aggr` into the same space after. 'n' or 'y' and should be left as 'n' majority of the times.
+  * pipeline - which analysis the pipeline should run
+  * sample_pair - For citeseq, which fastq samples should be analysed together
+  * hto - What HTO tags are used for the specific sample
+  * libtype - For citeseq, what type of sample [rna/adt/hto/crispr]
 
 * fqdir - the directory where you can find the fastq files.
 

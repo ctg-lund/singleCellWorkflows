@@ -1,0 +1,22 @@
+- name: SPLITSHEET
+  description: Splits a sample sheet into separate CSV files based on headers and pipeline value.
+  input:
+    - name: samplesheet
+      type: path
+      description: Path to the sample sheet file.
+    - name: pipeline
+      type: val
+      description: Pipeline value used to filter lines in the sample sheet.
+  output:
+    - name: data
+      type: path
+      description: Path to the generated "10X_Data.csv" file.
+    - name: pipe_data
+      type: path
+      description: Path to the generated "Data.csv" file.
+    - name: flex
+      type: path
+      description: Path to the generated "10X_Flex_Settings.csv" file.
+    - name: citeseq
+      type:path 
+      description :Path to the generated "10X_CiteSeq_Settings.csv" file.

@@ -1,0 +1,31 @@
+- name: FASTQC
+  description: Runs FastQC on all fastq.gz files in a sample directory and generates HTML and zip reports.
+  input:
+    - name: sample_id
+      type: val
+      description: The ID of the sample being processed.
+    - name: sample_species
+      type: val
+      description: The species of the sample being processed.
+    - name: force_cells
+      type: val
+      description : The number of cells to force for cellranger count. 
+    - name : cellranger_aggregate 
+      type : val 
+      description : Whether to run cellranger aggregate. 
+    - name : project_id 
+      type : val 
+      description : The ID of the project being processed. 
+    - name : outdir 
+      type : val 
+      description : The output directory for the project. 
+
+  output:
+    - name: "*fastqc*"
+      type: path
+      description: Path to the generated FastQC HTML and zip report files.
+
+  publishDir:
+    path : "$outdir/$project_id/qc/fastqc"
+    mode : 'move'
+    pattern : "*fastqc*"

@@ -1,0 +1,24 @@
+- name: MULTIQC
+  description: Runs MultiQC on a project directory and generates an HTML report.
+  input:
+    - name: count_done
+      type: val
+      description: A value indicating that counting is done.
+    - name: outdir
+      type: val
+      description: The output directory for the project.
+    - name: project_id
+      type: val
+      description: The ID of the project being processed.
+  output:
+    - name: "*.html"
+      type: path
+      description: Path to the generated MultiQC HTML report file.
+    - name : project_id 
+      type : val 
+      emit : project_id 
+      description : The ID of the project being processed. 
+  publishDir:
+    path : "$outdir/$project_id/qc/multiqc"
+    mode : 'move'
+    pattern : "*.html"

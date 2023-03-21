@@ -1,0 +1,20 @@
+- name: MD5SUM
+  description: Calculates MD5 checksums for all files in a project directory and saves them to a text file.
+  input:
+    - name: "*.html"
+      type: file
+      description: HTML files in the project directory.
+    - name: outdir
+      type: val
+      description: The output directory for the project.
+    - name: project_id
+      type: val
+      description: The ID of the project being processed.
+  output:
+    - name : "ctg-md5*"
+      type : file 
+      description : The generated text file containing MD5 checksums for all files in the project directory. 
+  publishDir:
+    path : "${outdir}/${project_id}/"
+    mode : 'move'
+    pattern : "ctg-md5.${project_id}.txt"

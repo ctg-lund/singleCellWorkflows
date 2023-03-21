@@ -1,0 +1,43 @@
+- name: COUNT
+  description: This process runs cellranger count on input fastq files and outputs results to a specified directory.
+  input:
+    - name: sample_id
+      type: val
+      description: ID of the sample being processed.
+    - name: sample_species
+      type: val
+      description: Species of the sample being processed (Human, Mouse, hs-mm or custom).
+    - name: force_cells
+      type: val
+      description : The number of cells to force for cellranger count. 
+    - name : cellranger_aggregate 
+      type : val 
+      description : Whether to run cellranger aggregate. 
+    - name : project_id 
+      type : val 
+      description : The ID of the project being processed. 
+    - name : fqdir 
+      type : val 
+      description : Directory containing fastq files.  
+    - name : outdir 
+      type : val 
+      description : The output directory for results.  
+    - name: config
+      type: path
+      description: Configuration file for options such as filter and genome reference.
+
+  output:
+    - name: "${sample_id}/outs/*"
+      type: file
+      description: Results from cellranger count including metrics_summary.csv, web_summary.html and cloupe.cloupe files.
+    - name: done
+      type: val
+      description: A value 'x' indicating that the process has completed successfully.
+    - name: project_id
+       type : val 
+       description : The ID of the project being processed.
+
+  publishDir:
+     path :"${outdir}/${project_id}/count-cr/"
+     mode :'move'
+     pattern :"$sample_id/outs/*"

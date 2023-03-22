@@ -3,13 +3,12 @@
 ![Logo](images/singleCellLogo.png "Logo")
 This will act as the starting point for future singleCell nextflow pipelines. The thought is to develop each module to work independetly so that they will all we interchangeable in the end. 
 
-## Roadmap
-Stability of different analysises.
-- [X] 10X Gene Expression
-- [ ] 10X Feature Barcode
-- [ ] 10X Flex
-- [ ] 10X VDJ
-- [ ] ParseBioscience
+## Status for workflows
+[![10X scRNASEQ](https://img.shields.io/badge/10X-scRNAseq-brightgreen)](/subworkflows/scrnaseq.nf)
+[![10X Feature Barcode](https://img.shields.io/badge/10X-Feature%20Barcode-yellow)](/subworkflows/scciteseq.nf) 
+[![10X VDJ](https://img.shields.io/badge/10X-VDJ-red)]() [![10X Flex](https://img.shields.io/badge/10X-Flex-red)](/subworkflows/flexscrnaseq.nf)
+
+
 ## Required inputs
 
 * SampleSheet as formated in [the examples](/examples/CTG_SampleSheet.csv) with the following columns:

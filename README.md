@@ -1,7 +1,7 @@
 # CTG singleCellWorkflows
 ## Introduction
 ![Logo](images/singleCellLogo.png "Logo")
-This will act as the starting point for future singleCell nextflow pipelines. The thought is to develop each module to work independetly so that they will all we interchangeable in the end. 
+This will act as the starting point for future singleCell nextflow pipelines. The thought is to develop each module to work independetly so that they will all be interchangeable in the end. 
 
 ## Status for workflows
 [![10X scRNASEQ](https://img.shields.io/badge/10X-scRNAseq-brightgreen)](/subworkflows/scrnaseq.nf)

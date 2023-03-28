@@ -37,7 +37,7 @@ process COUNT {
 	"""
 	cellranger count \\
 	     --id=$sample_id \\
-	     --fastqs=$fqdir/$sample_id \\
+	     --fastqs=$outdir/$project_id/fastq \\
 	     --sample=$sample_id \\
 		 --project=$project_id \\
 	     --transcriptome=$genome \\

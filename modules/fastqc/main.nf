@@ -1,5 +1,5 @@
 process FASTQC {
-	publishDir "$outdir/$project_id/qc/fastqc", mode: 'move', pattern: "*fastqc*"
+	publishDir "$outdir/$project_id/1_qc/fastqc", mode: 'move', pattern: "*fastqc*"
 
 
 	input:

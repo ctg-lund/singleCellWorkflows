@@ -1,5 +1,5 @@
 process MULTIQC {
-    publishDir "$outdir/$project_id/qc/multiqc", mode: 'move', pattern : "*.html"
+    publishDir "$outdir/$project_id/1_qc/multiqc", mode: 'move', pattern : "*.html"
 
     input:
         val(count_done)

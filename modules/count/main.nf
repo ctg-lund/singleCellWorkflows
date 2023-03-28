@@ -1,6 +1,6 @@
 process COUNT {
 
-	publishDir "${outdir}/${project_id}/count/", mode: "move", pattern: "$sample_id/outs/*"
+	publishDir "${outdir}/${project_id}/2_count/", mode: "move", pattern: "$sample_id/outs/*"
 
 	input: 
         tuple val(sample_id), val(sample_species), val(force), val(cellranger_aggregate), val(project_id)

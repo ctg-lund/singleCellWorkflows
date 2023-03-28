@@ -19,6 +19,7 @@ include { PIPE_DONE } from "../modules/pipeline_done/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { CREATE_MULTI_CONFIG } from "../modules/create_multi_config/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
+include { FILTER_ADTS } from "../modules/filter_adts/main"
 
 
 workflow SCCITESEQ {
@@ -33,6 +34,4 @@ workflow SCCITESEQ {
     // adt_info_ch =  sheet_ch.citeseq
     //     .splitCsv(header:true)
     //     .map { row -> tuple( row.ADT)}
-
-    
 }

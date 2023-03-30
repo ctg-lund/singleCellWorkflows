@@ -41,7 +41,7 @@ process COUNT {
 		 --project=$project_id \\
 	     --transcriptome=$genome \\
 		--localcores=19 --localmem=120 \\
-		$includeintrons $forcecells
+		 $forcecells
 
 	"""
 	stub:

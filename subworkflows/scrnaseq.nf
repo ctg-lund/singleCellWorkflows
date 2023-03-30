@@ -37,7 +37,7 @@ workflow SCRNASEQ {
 
 	no_file_ch = file(params.feature_reference)
 	
-	count_ch = COUNT(sample_info_ch, fqdir, outdir, no_file_ch)
+	count_ch = COUNT(sample_info_ch,  outdir, no_file_ch)
 
 	multiqc_ch = MULTIQC(count_ch.done.collect(), outdir, project_id_ch.unique())
 	

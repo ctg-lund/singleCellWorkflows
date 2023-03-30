@@ -4,7 +4,6 @@ process COUNT {
 
 	input: 
         tuple val(sample_id), val(sample_species), val(force), val(cellranger_aggregate), val(project_id)
-		val fqdir
 		val outdir
 		path config
 

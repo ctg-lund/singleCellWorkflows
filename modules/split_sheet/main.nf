@@ -4,9 +4,9 @@ process SPLITSHEET {
         val pipeline
     output:
         path "10X_Data.csv", emit: data
-        path "Data.csv", emit: pipe_data
-        path "10X_Flex_Settings.csv", emit: flex
-        path "10X_CiteSeq_Settings.csv", emit: citeseq
+        path "Data.csv", emit: pipe_data, optional: true
+        path "10X_Flex_Settings.csv", emit: flex, optional: true
+        path "10X_CiteSeq_Settings.csv", emit: citeseq, optional: true
     shell:
     '''
     while read line; do

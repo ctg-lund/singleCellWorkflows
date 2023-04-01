@@ -10,7 +10,7 @@ process FASTQC {
 		path "*fastqc*"
 	shell:
 	"""
-        for file in $outdir/$project_id/fastq/*fastq.gz
+        for file in $outdir/$project_id/fastq/$sample_id*fastq.gz
             do fastqc -t $task.cpus \$file --outdir=./
         done
 	"""

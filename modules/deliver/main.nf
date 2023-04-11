@@ -3,7 +3,7 @@ process DELIVER_PROJ {
 	input:
 		val(outdir)
 		val(project_id)
-		file "ctg-md5*"
+		val "md5done"
 
 	output:
 		val project_id

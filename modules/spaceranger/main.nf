@@ -31,7 +31,7 @@ process SPACECOUNT {
 			--sample=$Sample_ID \
 			--image=$outdir/$Sample_Project/metadata/$image \
 			--slide=$slide \
-			--slidefile=$params.slide_references/V42L21-335.gpr \
+			--slidefile=$params.slide_references/${slide}.gpr \
 			--area=$area \
 			--cytaimage=$outdir/$Sample_Project/metadata/$cytaimage \
     """

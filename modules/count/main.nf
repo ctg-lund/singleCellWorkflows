@@ -11,14 +11,15 @@ process COUNT {
         file "${sample_id}/outs/*" 
 		val ('x'), emit: done
 		val project_id, emit: project_id
+
 	script:
 	def filter = config.name != 'NO_FILE' ? "--filter $opt" : ''
 	// Set force-cells if force not "n"
 	forcecells=""
-	if ( force != "n" && force != "null" ) {
-	   forcecells="--force-cells=" + force }
+	// Find better solution in the future
+	// if ( force != "n" && force != "null" && force != "") {
+	//    forcecells="--force-cells=" + force }
 
-	includeintrons="--include-introns true" 
 
 	// Get sample_specieserence
 	if ( sample_species == "Human" || sample_species == "human") {

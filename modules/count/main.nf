@@ -16,9 +16,8 @@ process COUNT {
 	def filter = config.name != 'NO_FILE' ? "--filter $opt" : ''
 	// Set force-cells if force not "n"
 	forcecells=""
-	// Find better solution in the future
-	// if ( force != "n" && force != "null" && force != "") {
-	//    forcecells="--force-cells=" + force }
+	if ( force != "n" && force != "null") {
+	   forcecells="--force-cells=" + force }
 
 
 	// Get sample_specieserence

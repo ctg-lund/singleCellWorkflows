@@ -4,7 +4,6 @@ att2=$(find . -name *webtar*)
 
 echo """ProjectID,${project}
 email-bnf,jacob.karlstrom@med.lu.se
-email-lab,julia.braunig@med.lu.se
 PipelineName,sc-mkfastq
 software,
 software-version,

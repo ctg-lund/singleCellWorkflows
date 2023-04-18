@@ -22,8 +22,6 @@ This will act as the starting point for future singleCell nextflow pipelines. Th
   * hto - What HTO tags are used for the specific sample
   * libtype - For citeseq, what type of sample [rna/adt/hto/crispr]
 
-* fqdir - the directory where you can find the fastq files.
-
 ## How to run
 Normally:
 ```

@@ -15,7 +15,7 @@ include { MD5SUM } from "../modules/md5sum/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_ADTS } from "../modules/filter_adts/main"
-include { GENERATE_CITE_LIB } from "../modules/multi_config/generate_lib/main"
+include { GENERATE_LIB_CSV } from "../modules/multi_config/generate_lib/main"
 
 workflow SCCITESEQ {
     sheet_ch = SPLITSHEET(samplesheet, params.analysis)

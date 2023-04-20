@@ -7,7 +7,7 @@ ctgqc = params.ctgqc
 samplesheet = file(params.samplesheet)
 
 // Import modules
-include { COUNT } from "../modules/count/main"
+include { COUNT } from "../modules/cellranger/count-rna/main"
 include { DELIVERY_INFO } from "../modules/delivery_info/main"
 include { FASTQC } from "../modules/fastqc/main"
 include { MULTIQC } from "../modules/multiqc/main"

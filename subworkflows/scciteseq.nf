@@ -20,7 +20,7 @@ include { DELIVER_PROJ } from "../modules/deliver/main"
 include { CREATE_MULTI_CONFIG } from "../modules/create_multi_config/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_ADTS } from "../modules/filter_adts/main"
-
+include { GENERATE_CITE_LIB } from "../modules/generate_cite_lib/main"
 
 workflow SCCITESEQ {
     sheet_ch = SPLITSHEET(samplesheet, params.analysis)
@@ -28,10 +28,8 @@ workflow SCCITESEQ {
     // all samplesheet info
     sample_info_ch = sheet_ch.data
         .splitCsv(header:true)
-        .map { row -> tuple( row.Sample_ID, row.Sample_Species, row.force, row.agg, row.Sample_Project, row.sample_pair, row.hto) }
+        .map { row -> tuple( row.Sample_ID, row.Sample_Species, row.force, row.agg, row.Sample_Project, row.sample_pair, row.hto, row.libtype) }
         .view()
-
-    // adt_info_ch =  sheet_ch.citeseq
-    //     .splitCsv(header:true)
-    //     .map { row -> tuple( row.ADT)}
+    
+    lib_ch =  GENERATE_CITE_LIB(sample_info_ch, outdir)
 }

@@ -20,7 +20,7 @@ include { DELIVER_PROJ } from "../modules/deliver/main"
 include { CREATE_MULTI_CONFIG } from "../modules/create_multi_config/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_ADTS } from "../modules/filter_adts/main"
-include { GENERATE_CITE_LIB } from "../modules/generate_cite_lib/main"
+include { GENERATE_CITE_LIB } from "../modules/multi_config/generate_lib/main"
 
 workflow SCCITESEQ {
     sheet_ch = SPLITSHEET(samplesheet, params.analysis)

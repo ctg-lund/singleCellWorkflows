@@ -7,7 +7,9 @@ process GENERATE_CITE_LIB{
     script:
     if (libtype == 'rna') {
         library_type = 'Gene Expression'
-    } else if (libtype == 'hto' || libtype == 'adt') {
+    } else if (libtype == 'hto') {
+        library_type = 'Multiplexing Capture'
+    } else if (libtype == 'adt') {
         library_type = 'Antibody Capture'
     }
     """

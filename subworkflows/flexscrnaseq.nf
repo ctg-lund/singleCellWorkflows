@@ -11,7 +11,6 @@ include { FASTQC } from "../modules/fastqc/main"
 include { MULTIQC } from "../modules/multiqc/main"
 include { MD5SUM } from "../modules/md5sum/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
-include { CREATE_MULTI_CONFIG } from "../modules/create_multi_config/main"
 
 
 workflow FLEX_SCRNASEQ{

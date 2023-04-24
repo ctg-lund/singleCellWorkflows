@@ -7,7 +7,7 @@ process MULTIQC {
     	val(project_id)
 
     output:
-        path "*.html"
+        path "*.html", emit: html_report
         val project_id, emit: project_id
 
     script:

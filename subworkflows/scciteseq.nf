@@ -16,6 +16,7 @@ include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_ADTS } from "../modules/filter_adts/main"
 include { GENERATE_LIB_CSV } from "../modules/multi_config/generate_lib/main"
+include { COMBINE_LIB_CSV } from "../modules/multi_config/combine_lib/main"
 
 workflow SCCITESEQ {
     sheet_ch = SPLITSHEET(samplesheet, params.analysis)
@@ -26,5 +27,7 @@ workflow SCCITESEQ {
         .map { row -> tuple( row.Sample_ID, row.Sample_Species, row.force, row.agg, row.Sample_Project, row.sample_pair, row.hto, row.libtype) }
         .view()
     
-    lib_ch =  GENERATE_CITE_LIB(sample_info_ch, outdir)
+    lib_ch =  GENERATE_LIB_CSV(sample_info_ch, outdir)
+
+    combine_lib_ch = COMBINE_LIB_CSV(lib_ch.collect())
 }

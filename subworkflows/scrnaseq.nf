@@ -15,6 +15,7 @@ include { MD5SUM } from "../modules/md5sum/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { CREATE_MULTI_CONFIG } from "../modules/create_multi_config/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
+include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 
 workflow SCRNASEQ {
 	// Parse samplesheet
@@ -38,8 +39,10 @@ workflow SCRNASEQ {
 	count_ch = COUNT(sample_info_ch,  outdir, no_file_ch)
 
 	multiqc_ch = MULTIQC(count_ch.done.collect(), outdir, project_id_ch.unique())
+
+	pack_websummaries_ch = PACK_WEBSUMMARIES(multiqc_ch.html_report, outdir, multiqc_ch.project_id)
 	
-	md5sum_ch = MD5SUM(multiqc_ch[0], outdir, multiqc_ch.project_id)
+	md5sum_ch = MD5SUM(pack_websummaries_ch.tarball, outdir, pack_websummaries_ch.project_id)
 
 	deliver_auto_ch = DELIVER_PROJ(outdir, project_id_ch.unique(), md5sum_ch)
 }

@@ -14,7 +14,7 @@ process PACK_WEBSUMMARIES{
     #!/bin/bash
 
     # set the folder path
-    folder_path="$(readlink -f .)"
+    folder_path="$(readlink -f $outdir/$project_id)"
 
     # create an array to store the file paths and sample names
     file_paths=()
@@ -39,7 +39,7 @@ process PACK_WEBSUMMARIES{
     # loop through the file paths and rename them with unique names in the temporary directory
     for ((i=0; i<${#file_paths[@]}; i++)); do
     # generate a unique name for the file
-    unique_name=${sample_names[$i]}_web_summaryhtml
+    unique_name=${sample_names[$i]}_web_summary.html
     echo $unique_name
     # copy the file to the temporary directory with the unique name
     cp "${file_paths[$i]}" "$temp_dir/$unique_name"

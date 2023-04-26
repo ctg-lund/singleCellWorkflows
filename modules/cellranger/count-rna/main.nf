@@ -18,7 +18,11 @@ process COUNT {
 	forcecells=""
 	if ( force != "n" && force != "null") {
 	   forcecells="--force-cells=" + force }
-
+	if ( params.intron_mode != 'true' ) {
+		intron_argument="--include-introns=false"
+	} else {
+		intron_argument=""
+	}
 
 	// Get sample_specieserence
 	if ( sample_species == "Human" || sample_species == "human") {
@@ -41,7 +45,7 @@ process COUNT {
 		 --project=$project_id \\
 	     --transcriptome=$genome \\
 		--localcores=19 --localmem=120 \\
-		 $forcecells
+		 $forcecells $intron_argument
 
 	"""
 	stub:

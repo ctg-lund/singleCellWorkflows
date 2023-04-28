@@ -48,7 +48,7 @@ process PACK_WEBSUMMARIES{
     done
 
     # create a tarball with the renamed files in the temporary directory
-    tar_filename="web_summary.tar"
+    tar_filename="web_summaries.tar"
     tar cf "$tar_filename" -C "$temp_dir" "${file_paths[@]}"
 
     # extract the tarball to the current directory, removing the prefixed folder path

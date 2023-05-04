@@ -16,6 +16,7 @@ include { DELIVER_PROJ } from "../modules/deliver/main"
 include { CREATE_MULTI_CONFIG } from "../modules/create_multi_config/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
+include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 
 workflow SCRNASEQ {
 	// Parse samplesheet
@@ -39,6 +40,8 @@ workflow SCRNASEQ {
 	count_ch = COUNT(sample_info_ch,  outdir, no_file_ch)
 
 	multiqc_ch = MULTIQC(count_ch.done.collect(), outdir, project_id_ch.unique())
+
+	SYNC_MULTIQC(multiqc_ch.html_report, project_id_ch.unique())
 
 	pack_websummaries_ch = PACK_WEBSUMMARIES(multiqc_ch.html_report, outdir, multiqc_ch.project_id)
 	

@@ -12,7 +12,7 @@ process MULTIQC {
 
     script:
     """
-    multiqc -f ${outdir}/$project_id  --outdir . -n ${project_id}_multiqc_report.html
+    multiqc -f ${outdir}/$project_id  --outdir .  -c $params.multiqc_conf -n multiqc_report.html
     """
     stub:
     """

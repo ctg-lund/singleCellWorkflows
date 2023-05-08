@@ -3,7 +3,8 @@ process MULTI {
 	publishDir "${params.outdir}/${project_id}/multi/", mode: "move", pattern: "$sample_id/outs/*"
 
 	input: 
-        path multi_csv
+        path config
+		val sample_id
 		val(project_id)
 
 	output:
@@ -12,19 +13,11 @@ process MULTI {
 		val project_id, emit: project_id
 		
 	script:
-	// Set force-cells if force not "n"
-	forcecells=""
-	if ( force != "n" && force != "null" ) {
-	   forcecells="--force-cells=" + force }
-	includeintrons="--include-introns true" 
-
 	"""
 	cellranger multi \\
 	     --id=$sample_id \\
-         --csv=$multi_csv \\
-		--localcores=19 --localmem=120 \\
-		$includeintrons $forcecells
-
+         --csv=$config \\
+		--localcores=22 --localmem=120 \\
 	"""
 	stub:
 	"""

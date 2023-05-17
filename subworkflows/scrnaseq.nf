@@ -34,8 +34,6 @@ workflow SCRNASEQ {
 		.splitCsv(header:true)
 		.map { row ->  row.Sample_Project  }
 
-	// Create a NO_FILE channel for count module
-
 	FASTQC(sample_fastqc_ch)
 
 	no_file_ch = file(params.feature_reference)

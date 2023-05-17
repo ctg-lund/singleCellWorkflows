@@ -1,10 +1,9 @@
 process COUNT {
 
-	publishDir "${outdir}/${project_id}/2_count/", mode: "move", pattern: "$sample_id/outs/*"
+	publishDir "$params.outdir/${project_id}/2_count/", mode: "move", pattern: "$sample_id/outs/*"
 
 	input: 
         tuple val(sample_id), val(sample_species), val(force), val(cellranger_aggregate), val(project_id)
-		val outdir
 		path config
 
 	output:
@@ -40,7 +39,7 @@ process COUNT {
 	"""
 	cellranger count \\
 	     --id=$sample_id \\
-	     --fastqs=$outdir/$project_id/fastq \\
+	     --fastqs=$params.outdir/$project_id/fastq \\
 	     --sample=$sample_id \\
 		 --project=$project_id \\
 	     --transcriptome=$genome \\

@@ -1,9 +1,8 @@
 process PACK_WEBSUMMARIES{
-    publishDir "$outdir/$project_id/3_summaries/cellranger", mode: 'move', pattern : "web_summaries.tar"
+    publishDir "$params.outdir/$project_id/3_summaries/cellranger", mode: 'move', pattern : "web_summaries.tar"
 
     input:
         path "*.html"
-        val outdir 
         val project_id
     output:
         path "web_summaries.tar", emit: tarball
@@ -14,7 +13,7 @@ process PACK_WEBSUMMARIES{
     #!/bin/bash
 
     # set the folder path
-    folder_path="$(readlink -f !{outdir}/!{project_id})"
+    folder_path="$(readlink -f !{params.outdir}/!{project_id})"
 
     # create an array to store the file paths and sample names
     file_paths=()

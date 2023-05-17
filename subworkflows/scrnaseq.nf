@@ -37,15 +37,15 @@ workflow SCRNASEQ {
 
 	no_file_ch = file(params.feature_reference)
 	
-	count_ch = COUNT(sample_info_ch,  outdir, no_file_ch)
+	count_ch = COUNT(sample_info_ch, no_file_ch)
 
-	multiqc_ch = MULTIQC(count_ch.done.collect(), outdir, project_id_ch.unique())
+	multiqc_ch = MULTIQC(count_ch.done.collect(), project_id_ch.unique())
 
 	SYNC_MULTIQC(multiqc_ch.html_report, project_id_ch.unique())
 
-	pack_websummaries_ch = PACK_WEBSUMMARIES(multiqc_ch.html_report, outdir, multiqc_ch.project_id)
+	pack_websummaries_ch = PACK_WEBSUMMARIES(multiqc_ch.html_report, multiqc_ch.project_id)
 	
-	md5sum_ch = MD5SUM(pack_websummaries_ch.tarball, outdir, pack_websummaries_ch.project_id)
+	md5sum_ch = MD5SUM(pack_websummaries_ch.tarball, pack_websummaries_ch.project_id)
 
 	deliver_auto_ch = DELIVER_PROJ(outdir, project_id_ch.unique(), md5sum_ch)
 }

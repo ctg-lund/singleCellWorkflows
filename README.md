@@ -30,9 +30,9 @@ nextflow run pipe-sc-rna-10x.nf --samplesheet </path/to/your/samplesheet.csv> \
 ```
 With stub:
 ```bash
-nextflow run pipe-sc-rna-10x.nf --samplesheet examples/samplesheet.csv  \
-    --outdir /Users/jacobkarlstrom/Projects/pipelines/sc-rna-10x-dsl2/examples/output \
+nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \
+    --outdir /Users/jacobkarlstrom/Projects/singleCellWorkflows/examples/output \
     -profile local_dev \
     -stub-run \
-    --fqdir /Users/jacobkarlstrom/Projects/pipelines/sc-rna-10x-dsl2/examples
+   --analysis scflex-10x
 ```

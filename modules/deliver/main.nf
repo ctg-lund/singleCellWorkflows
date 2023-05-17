@@ -1,7 +1,6 @@
 process DELIVER_PROJ {
 
 	input:
-		val(outdir)
 		val(project_id)
 		val "md5done"
 
@@ -10,8 +9,8 @@ process DELIVER_PROJ {
 
 	script:
 	"""
-	cd $outdir/$project_id
-	bash deliver.sh	
+	cd $params.outdir/$project_id
+	bash deliver.sh
 	"""
 	stub:
 	"""

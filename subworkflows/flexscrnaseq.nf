@@ -13,7 +13,7 @@ include { MD5SUM } from "../modules/md5sum/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { SPLIT_MULTIPLEX_SHEET } from "../modules/multi_config/split_multiplex/main"
-
+include { GEN_FLEX_CONFIG } from "../modules/multi_config/gen_flex_config/main"
 workflow FLEX_SCRNASEQ{
 
 	sheet_ch = SPLITSHEET(samplesheet, params.analysis)
@@ -22,7 +22,7 @@ workflow FLEX_SCRNASEQ{
 		.splitCsv(header:true)
 		.map { row -> tuple( row.Sample_ID, row.Sample_Species, row.Sample_Project) }
 	
-	SPLIT_MULTIPLEX_SHEET(sheet_ch.flex, "project4")
+	split_multi_ch = SPLIT_MULTIPLEX_SHEET(sheet_ch.flex, sample_info_ch)
 
-	
+	GEN_FLEX_CONFIG(split_multi_ch, sample_info_ch)
 }

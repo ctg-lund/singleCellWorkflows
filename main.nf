@@ -11,7 +11,7 @@ workflow {
 	if (params.analysis == 'scrna-10x') {
 		SCRNASEQ()
 	}
-	else if (params.analysis == 'scfix-10x') {
+	else if (params.analysis == 'scflex-10x') {
 		FLEX_SCRNASEQ()
 	} else if (params.analysis == 'scciteseq-10x') {
 		SCCITESEQ()

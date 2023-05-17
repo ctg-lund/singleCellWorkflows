@@ -4,11 +4,10 @@ process MULTI {
 
 	input: 
         path config
-		val sample_id
-		val(project_id)
+		tuple val(sample_id), val(project_id)
 
 	output:
-        file "${sample_id}/outs/*" 
+        path "${sample_id}/outs/*" 
 		val ('x'), emit: done
 		val project_id, emit: project_id
 		

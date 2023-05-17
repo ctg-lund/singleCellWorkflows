@@ -3,7 +3,6 @@ process MULTIQC {
 
     input:
         val(count_done)
-        val outdir
     	val(project_id)
 
     output:
@@ -12,7 +11,7 @@ process MULTIQC {
 
     script:
     """
-    multiqc -f ${outdir}/$project_id  --outdir .  -c $params.multiqc_conf -n multiqc_report.html
+    multiqc -f $params.outdir/$project_id  --outdir .  -c $params.multiqc_conf -n multiqc_report.html
     """
     stub:
     """

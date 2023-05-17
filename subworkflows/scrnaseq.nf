@@ -27,13 +27,16 @@ workflow SCRNASEQ {
 		.splitCsv(header:true)
 		.map { row -> tuple( row.Sample_ID, row.Sample_Species, row.force, row.agg, row.Sample_Project) }
 
+	sample_fastqc_ch = sheet_ch.data
+		.splitCsv(header:true)
+		.map { row -> tuple( row.Sample_ID, row.Sample_Project) }
 	project_id_ch = sheet_ch.data
 		.splitCsv(header:true)
 		.map { row ->  row.Sample_Project  }
 
 	// Create a NO_FILE channel for count module
 
-	FASTQC(sample_info_ch, outdir)
+	FASTQC(sample_fastqc_ch)
 
 	no_file_ch = file(params.feature_reference)
 	

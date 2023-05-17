@@ -14,7 +14,7 @@ process SPLITSHEET {
             header=$(echo "$line" | tr -d '[],')
             touch ${header}.csv
         else
-            if ${header} != "10X_Data"; then
+            if [ ${header} != "10X_Data" ]; then
                 echo ${line} >> ${header}.csv
             fi
             if [[ $line == *"!{pipeline}"*  ||  $line == *"Sample_ID"* ]]; then

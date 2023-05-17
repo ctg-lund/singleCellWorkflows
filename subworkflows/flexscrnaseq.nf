@@ -38,8 +38,8 @@ workflow FLEX_SCRNASEQ{
 
 	multiqc_ch = MULTIQC(multi_ch.done, multi_ch.project_id)
 	
-	MD5SUM(multi_ch.html_report, multi_ch.project_id)
+	md5sum_ch = MD5SUM(multi_ch.html_report, multi_ch.project_id)
 
 	// Deliverables
-	deliver_ch = DELIVER_PROJ("poopity", "scoopity", multi_ch.done)
+	deliver_ch = DELIVER_PROJ(md5sum_ch.project_id, multi_ch.md5done)
 }

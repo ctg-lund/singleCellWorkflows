@@ -1,6 +1,5 @@
 // Output dirs
 outdir = params.outdir
-fqdir = params.fqdir
 ctgqc = params.ctgqc
 
 // Read and process CTG samplesheet (must be plain .csv - not directly from excel)

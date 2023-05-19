@@ -1,6 +1,6 @@
 process MULTI {
 
-	publishDir "${params.outdir}/${project_id}/multi/", mode: "move", pattern: "$sample_id/outs/*"
+	publishDir "${params.outdir}/${project_id}/2_multi/", mode: "move", pattern: "$sample_id/outs/*"
 
 	input: 
         path config

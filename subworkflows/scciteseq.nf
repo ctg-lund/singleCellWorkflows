@@ -1,12 +1,5 @@
-// Output dirs
-outdir = params.outdir
-fqdir = params.fqdir
-ctgqc = params.ctgqc
-
 // Read and process CTG samplesheet (must be plain .csv - not directly from excel)
 samplesheet = file(params.samplesheet)
-
-params.analysis = 'scciteseq-10x'
 
 // Import modules
 include { FASTQC } from "../modules/fastqc/main"
@@ -24,10 +17,10 @@ workflow SCCITESEQ {
     // all samplesheet info
     sample_info_ch = sheet_ch.data
         .splitCsv(header:true)
-        .map { row -> tuple( row.Sample_ID, row.Sample_Species, row.force, row.agg, row.Sample_Project, row.sample_pair, row.hto, row.libtype) }
-        .view()
-    
-    lib_ch =  GENERATE_LIB_CSV(sample_info_ch, outdir)
+        .map { row -> tuple( row.Sample_ID, row.Sample_Species, row.Sample_Project, row.sample_pair, row.libtype) }
+        .groupTuple(by:3)
 
-    combine_lib_ch = COMBINE_LIB_CSV(lib_ch.collect())
+    lib_ch =  GENERATE_LIB_CSV(sample_info_ch)
+
+    // combine_lib_ch = COMBINE_LIB_CSV(lib_ch.collect())
 }

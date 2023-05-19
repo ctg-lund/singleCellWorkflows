@@ -1,18 +1,26 @@
 process GENERATE_LIB_CSV{
     input:
-        tuple val(Sample_ID), val(Sample_Species), val(force), val(agg), val(Sample_Project), val(sample_pair), val(hto), val(libtype)
-        val outdir
+        tuple val(Sample_ID), val(Sample_Species), val(Sample_Project), val(sample_pair), val(libtype)
     output:
-        path '*library.csv'
+        path 'library.csv'
+        val sample_name, emit: sample_name
+        val sample_project, emit: sample_project
     script:
-    if (libtype == 'rna') {
-        library_type = 'Gene Expression'
-    } else if (libtype == 'hto') {
-        library_type = 'Multiplexing Capture'
-    } else if (libtype == 'adt') {
-        library_type = 'Antibody Capture'
+    lines=''
+    for ( int i = 0; i < Sample_ID.size(); i++ ) {
+        if (libtype[i] != 'gex'){
+            library="Antibody Capture"
+
+        } else {
+            library="Gene Expression"
+            sample_name = Sample_ID[i]
+            sample_project = Sample_Project[i]
+        }
+        lines +=params.outdir+"/"+Sample_Project[0]+"/fastq,"+Sample_ID[i]+","+library+"\n"
+
     }
     """
-    echo '$outdir/$Sample_Project/$Sample_ID,$Sample_ID,$library_type' > ${Sample_ID}_library.csv
+    echo \"\"\"fastqs,sample,library_type,
+${lines} \"\"\" > library.csv
     """
 }

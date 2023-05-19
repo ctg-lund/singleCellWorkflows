@@ -47,5 +47,5 @@ workflow SCRNASEQ {
 	
 	md5sum_ch = MD5SUM(pack_websummaries_ch.tarball, pack_websummaries_ch.project_id)
 
-	deliver_auto_ch = DELIVER_PROJ(outdir, project_id_ch.unique(), md5sum_ch)
+	deliver_auto_ch = DELIVER_PROJ(md5sum_ch.project_id)
 }

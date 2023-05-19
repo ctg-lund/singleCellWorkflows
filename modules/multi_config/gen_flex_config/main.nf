@@ -20,6 +20,13 @@ process GEN_FLEX_CONFIG {
         probeset=params.custom_probes
     }
 
+    if (split_multiplex_sheet.toString().length() == 0) {
+        samples = "[samples]\n"
+        samples += split_sheet.readLines()
+    } else {
+        samples = ""
+    }
+
     """
     echo \"\"\"[gene expression]
     reference,$transcriptome
@@ -27,8 +34,7 @@ process GEN_FLEX_CONFIG {
     [libraries]
     fastq_id,fastqs,feature_types
     $Sample_ID,$params.outdir/$Sample_Project/fastq,Gene Expression
-    [samples]
-    \$(cat $split_multiplex_sheet)
+    $samples
     \"\"\" > config.csv
     """
 }

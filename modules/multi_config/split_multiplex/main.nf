@@ -8,7 +8,11 @@ process SPLIT_MULTIPLEX_SHEET {
 
     script:
     """
+    if ! grep -q ${Sample_ID} ${multiplex_sheet}; then
+        touch split_multiplex.csv
+        exit 0
+    fi
     head -n 1 ${multiplex_sheet} > split_multiplex.csv
-    grep ${Sample_Project} ${multiplex_sheet} >> split_multiplex.csv
+    grep ${Sample_ID} ${multiplex_sheet} >> split_multiplex.csv
     """
 }

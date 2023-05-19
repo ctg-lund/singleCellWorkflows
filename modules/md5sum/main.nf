@@ -1,7 +1,6 @@
 process MD5SUM {
 
 	input:
-        file "*.html"
 		val project_id
 	output:
 		val project_id, emit: project_id

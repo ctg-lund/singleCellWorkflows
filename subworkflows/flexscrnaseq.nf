@@ -10,6 +10,7 @@ include { SPLITSHEET } from "../modules/split_sheet/main"
 include { SPLIT_MULTIPLEX_SHEET } from "../modules/multi_config/split_multiplex/main"
 include { GEN_FLEX_CONFIG } from "../modules/multi_config/gen_flex_config/main"
 include { MULTI } from "../modules/cellranger/multi/main"
+include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 
 workflow FLEX_SCRNASEQ{
 
@@ -33,6 +34,8 @@ workflow FLEX_SCRNASEQ{
 
 	multiqc_ch = MULTIQC(multi_ch.done, multi_ch.project_id)
 	
+	SYNC_MULTIQC(multiqc_ch.html_report, multi_ch.project_id)
+
 	md5sum_ch = MD5SUM(multiqc_ch.project_id)
 
 	// Deliverables

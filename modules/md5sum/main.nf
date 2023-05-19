@@ -4,7 +4,6 @@ process MD5SUM {
         file "*.html"
 		val project_id
 	output:
-		val ("md5done"), emit: md5done
 		val project_id, emit: project_id
 	
 	script:
@@ -14,6 +13,7 @@ process MD5SUM {
 	""" 
 	stub:
 	"""
+	cd $params.outdir/${project_id}
 	touch ctg-md5.${project_id}.txt
 	"""
 }

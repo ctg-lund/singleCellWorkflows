@@ -2,14 +2,17 @@
 samplesheet = file(params.samplesheet)
 
 // Import modules
+// QC Modules
 include { FASTQC } from "../modules/fastqc/main"
 include { MULTIQC } from "../modules/multiqc/main"
 include { MD5SUM } from "../modules/md5sum/main"
-include { DELIVER_PROJ } from "../modules/deliver/main"
+// Sample sheet modules
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { SPLIT_MULTIPLEX_SHEET } from "../modules/multi_config/split_multiplex/main"
 include { GEN_FLEX_CONFIG } from "../modules/multi_config/gen_flex_config/main"
 include { MULTI } from "../modules/cellranger/multi/main"
+// Deliverables
+include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 
 workflow FLEX_SCRNASEQ{

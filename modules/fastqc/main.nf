@@ -1,9 +1,9 @@
 process FASTQC {
-	publishDir "$outdir/$project_id/1_qc/fastqc", mode: 'move', pattern: "*fastqc*"
+	publishDir "$params.outdir/$project_id/1_qc/fastqc", mode: 'move', pattern: "*fastqc*"
 
 
 	input:
-		tuple val(sample_id) val(project_id)
+		tuple val(sample_id), val(project_id)
 	output:
 		path "*fastqc*"
 	shell:

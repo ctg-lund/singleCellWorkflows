@@ -7,5 +7,8 @@ process SYNC_MULTIQC {
     """
     cp -v $multiqc_report $params.ctgqc/$project_id/multiqc_report.html
     """
-
+    stub:
+    """
+    echo This is a stub for SYNC_MULTIQC
+    """
 }

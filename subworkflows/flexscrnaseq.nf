@@ -35,7 +35,7 @@ workflow FLEX_SCRNASEQ{
 
 	multi_ch = MULTI(config_ch)
 
-	multiqc_ch = MULTIQC(multi_ch.done, multi_ch.project_id)
+	multiqc_ch = MULTIQC(multi_ch.done.collect(), multi_ch.project_id.unique())
 	
 	SYNC_MULTIQC(multiqc_ch.html_report, multi_ch.project_id)
 

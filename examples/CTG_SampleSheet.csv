@@ -18,6 +18,7 @@ sample-5,human,project3,n,n,HTO1|HTO2,1,hto,scciteseq-10x
 sample-6,human,project3,n,n,n,1,adt,scciteseq-10x
 sample-7,human,project4,n,n,n,1,flex,scflex-10x
 sample-8,human,project5,n,n,n,1,flex,scflex-10x
+sample-9,human,project4,n,n,n,1,flex,scflex-10x
 ,,,,,,,,
 [10X_Flex_Settings]
 sample_id,probe_barcode,Sample_Project,,,,,,

@@ -1,25 +1,19 @@
 process COUNT {
 
-	publishDir "${outdir}/${project_id}/2_count/", mode: "move", pattern: "$sample_id/outs/*"
+	publishDir "${params.outdir}/${Sample_Project}/2_count/", mode: "move", pattern: "$Sample_ID/outs/*"
 
 	input: 
-        tuple val(sample_id), val(sample_species), val(force), val(project_id)
-		val outdir
-		path config
-
+        path library
+		path feature_reference
+		val Sample_ID
+		val Sample_Project
+		val sample_species
 	output:
-        file "${sample_id}/outs/*" 
+        path "${Sample_ID}/outs/*" 
 		val ('x'), emit: done
-		val project_id, emit: project_id
+		val Sample_Project, emit: sample_project
 
 	script:
-	def filter = config.name != 'NO_FILE' ? "--filter $opt" : ''
-	// Set force-cells if force not "n"
-	forcecells=""
-	if ( force != "n" && force != "null") {
-	   forcecells="--force-cells=" + force }
-
-
 	// Get sample_specieserence
 	if ( sample_species == "Human" || sample_species == "human") {
 	   genome=params.human }
@@ -35,22 +29,21 @@ process COUNT {
 
 	"""
 	cellranger count \\
-	     --id=$sample_id \\
-	     --fastqs=$outdir/$project_id/fastq \\
-	     --sample=$sample_id \\
-		 --project=$project_id \\
+	     --id=$Sample_ID \\
+	     --fastqs=$params.outdir/$Sample_Project/fastq \\
+	     --sample=$Sample_ID \\
+		 --project=$Sample_Project \\
 	     --transcriptome=$genome \\
-         --feature-ref=$params.feature_ref \\
-         --libraries=$libraries \\
+         --feature-ref=$feature_reference \\
+         --libraries=$library \\
 		 --localcores=19 --localmem=120 \\
-		 $forcecells
 
 	"""
 	stub:
 	"""
-	mkdir -p $sample_id/outs
-	touch $sample_id/outs/metrics_summary.csv
-	touch $sample_id/outs/web_summary.html
-	touch $sample_id/outs/cloupe.cloupe
+	mkdir -p $Sample_ID/outs
+	touch $Sample_ID/outs/metrics_summary.csv
+	touch $Sample_ID/outs/web_summary.html
+	touch $Sample_ID/outs/cloupe.cloupe
 	"""
 }

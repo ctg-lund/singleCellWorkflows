@@ -35,4 +35,10 @@ workflow SCCITESEQ {
     feature_reference_ch = FILTER_FEATURE_REFERENCE(sheet_ch.feature_reference, lib_ch.sample_project)
 
     count_ch = COUNT(lib_ch.library, feature_reference_ch, lib_ch.sample_name, lib_ch.sample_project, lib_ch.sample_species )
+
+    multiqc_ch = MULTIQC(count_ch.done.collect(), count_ch.sample_project.unique())
+
+    md5sum_ch = MD5SUM(multiqc_ch.project_id)
+
+    DELIVER_PROJ(md5sum_ch.project_id)
 }

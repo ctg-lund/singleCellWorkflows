@@ -11,7 +11,6 @@ include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_FEATURE_REFERENCE } from "../modules/filter_featureref/main"
 include { GENERATE_LIB_CSV } from "../modules/multi_config/generate_lib/main"
-include { COMBINE_LIB_CSV } from "../modules/multi_config/combine_lib/main"
 // Sample Processing
 include { COUNT } from "../modules/cellranger/count-citeseq/main"
 // Deliverables

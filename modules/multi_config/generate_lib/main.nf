@@ -2,7 +2,7 @@ process GENERATE_LIB_CSV{
     input:
         tuple val(Sample_ID), val(Sample_Species), val(Sample_Project), val(sample_pair), val(libtype)
     output:
-        path 'library.csv'
+        path 'library.csv', emit: library
         val sample_name, emit: sample_name
         val sample_project, emit: sample_project
     script:

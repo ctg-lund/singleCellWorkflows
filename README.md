@@ -23,5 +23,5 @@ nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \
 ## More info
 * [Project Setup](/docs/Setup.md)
 * [10X CiteSeq pipeline](/docs/scciteseq-10x.md)
-* [10X Flex pipeline](/docs/scciteseq-10x.md)
-* [10X RNA-seq pipeline](/docs/scciteseq-10x.md)
+* [10X Flex pipeline](/docs/scflex-10x.md)
+* [10X RNA-seq pipeline](/docs/scrna-10x.md)

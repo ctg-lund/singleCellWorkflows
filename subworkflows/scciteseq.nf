@@ -7,7 +7,7 @@ include { MULTIQC } from "../modules/multiqc/main"
 include { MD5SUM } from "../modules/md5sum/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
-include { FILTER_ADTS } from "../modules/filter_adts/main"
+include { FILTER_FEATURE_REFERENCE } from "../modules/filter_featureref/main"
 include { GENERATE_LIB_CSV } from "../modules/multi_config/generate_lib/main"
 include { COMBINE_LIB_CSV } from "../modules/multi_config/combine_lib/main"
 
@@ -22,5 +22,5 @@ workflow SCCITESEQ {
 
     lib_ch =  GENERATE_LIB_CSV(sample_info_ch)
 
-    // combine_lib_ch = COMBINE_LIB_CSV(lib_ch.collect())
+    feature_reference_ch = FILTER_FEATURE_REFERENCE(sheet_ch.feature_reference, lib_ch.sample_project)
 }

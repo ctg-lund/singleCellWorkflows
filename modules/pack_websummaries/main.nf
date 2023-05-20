@@ -2,7 +2,6 @@ process PACK_WEBSUMMARIES{
     publishDir "$params.outdir/$project_id/3_summaries/cellranger", mode: 'move', pattern : "web_summaries.tar"
 
     input:
-        path "*.html"
         val project_id
     output:
         path "web_summaries.tar", emit: tarball

@@ -6,6 +6,7 @@ samplesheet = file(params.samplesheet)
 include { FASTQC } from "../modules/fastqc/main"
 include { MULTIQC } from "../modules/multiqc/main"
 include { MD5SUM } from "../modules/md5sum/main"
+include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 // Sample sheet modules
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { SPLIT_MULTIPLEX_SHEET } from "../modules/multi_config/split_multiplex/main"
@@ -39,7 +40,9 @@ workflow FLEX_SCRNASEQ{
 	
 	SYNC_MULTIQC(multiqc_ch.html_report, multi_ch.project_id)
 
-	md5sum_ch = MD5SUM(multiqc_ch.project_id)
+	webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
+
+	md5sum_ch = MD5SUM(webpack_ch.project_id)
 
 	// Deliverables
 	deliver_ch = DELIVER_PROJ(md5sum_ch.project_id)

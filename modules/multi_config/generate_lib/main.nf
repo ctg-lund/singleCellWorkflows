@@ -8,6 +8,19 @@ process GENERATE_LIB_CSV{
         val sample_species, emit: sample_species
     script:
     lines=''
+
+    sample_project = Sample_Project[0]
+    sample_species = Sample_Species[0]
+    sample_name=''
+    if (libtype.contains('gex')) {
+        sample_name = Sample_ID[libtype.indexOf('gex')]
+    } else if (libtype.contains('adt')) {
+        sample_name = Sample_ID[libtype.indexOf('adt')]
+    } else if (libtype.contains('hto')) {
+        sample_name = Sample_ID[libtype.indexOf('hto')]
+    } else if (libtype.contains('crispr')) {
+        sample_name = Sample_ID[libtype.indexOf('crispr')]
+    }
     for ( int i = 0; i < Sample_ID.size(); i++ ) {
         if (libtype[i] == 'adt' || libtype[i] == 'hto'){
             library="Antibody Capture"
@@ -16,9 +29,6 @@ process GENERATE_LIB_CSV{
             library="CRISPR Guide Capture"
         } else {
             library="Gene Expression"
-            sample_name = Sample_ID[i]
-            sample_project = Sample_Project[i]
-            sample_species = Sample_Species[i]
         }
         lines +=params.outdir+"/"+Sample_Project[0]+"/fastq,"+Sample_ID[i]+","+library+"\n"
 

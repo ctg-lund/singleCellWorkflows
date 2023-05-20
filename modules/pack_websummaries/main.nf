@@ -55,9 +55,4 @@ process PACK_WEBSUMMARIES{
     # remove the temporary directory
     rm -rf "$temp_dir"
     '''
-
-    stub: 
-    '''
-    touch web_summaries.tar
-    '''
 }

@@ -6,6 +6,7 @@ samplesheet = file(params.samplesheet)
 include { FASTQC } from "../modules/fastqc/main"
 include { MULTIQC } from "../modules/multiqc/main"
 include { MD5SUM } from "../modules/md5sum/main"
+include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 // Input Parsing
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_FEATURE_REFERENCE } from "../modules/filter_featureref/main"
@@ -38,7 +39,9 @@ workflow SCCITESEQ {
 
     multiqc_ch = MULTIQC(count_ch.done.collect(), count_ch.sample_project.unique())
 
-    md5sum_ch = MD5SUM(multiqc_ch.project_id)
+    webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
+
+    md5sum_ch = MD5SUM(webpack_ch.project_id)
 
     DELIVER_PROJ(md5sum_ch.project_id)
 }

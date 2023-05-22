@@ -24,6 +24,7 @@ Explanation of each column:
 * **agg**: If you want to aggregate all the processed samples for visualization, set this column accordingly.
 * **pipeline**: This column specifies the pipeline that should be used for the sample. In this case, the value should be set to `scciteseq-10x`.
 * **sample_pair** Species which samples are paired for `cellranger count`.
+* **libtype** Dictates how the sample will be treated. Available type [gex|adt|hto|crispr]
 ## 10X_FeatureReference
 Described [here](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/feature-bc-analysis) by 10X official documentation.
 

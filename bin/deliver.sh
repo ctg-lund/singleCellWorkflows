@@ -13,4 +13,4 @@ name,
 attachment,${att}
 attachment,${att2}
 """ > ctg-delivery.info.csv
-bash /projects/fs1/shared/scripts/delivery/delivery.sh -d .
+bash /projects/fs1/shared/shared-scripts/delivery/delivery.sh -d .

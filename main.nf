@@ -5,6 +5,7 @@ nextflow.enable.dsl=2
 include { SCRNASEQ } from "./subworkflows/scrnaseq.nf"
 include { FLEX_SCRNASEQ } from "./subworkflows/flexscrnaseq.nf"
 include { SCCITESEQ } from "./subworkflows/scciteseq.nf"
+include { SCATAC } from "./subworkflows/scatac.nf"
 
 
 workflow {
@@ -15,6 +16,8 @@ workflow {
 		FLEX_SCRNASEQ()
 	} else if (params.analysis == 'scciteseq-10x') {
 		SCCITESEQ()
+	} else if (params.analysis == 'scatac-10x') {
+		SC_ATAC()
 	} else {
 		println "ERROR: No valid analysis type selected"
 	}

@@ -15,6 +15,7 @@ include { GENERATE_LIB_CSV } from "../modules/multi_config/generate_lib/main"
 include { COUNT } from "../modules/cellranger/count-citeseq/main"
 // Deliverables
 include { DELIVER_PROJ } from "../modules/deliver/main"
+include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 workflow SCCITESEQ {
     sheet_ch = SPLITSHEET(samplesheet, params.analysis)
 
@@ -38,6 +39,8 @@ workflow SCCITESEQ {
 
     multiqc_ch = MULTIQC(count_ch.done.collect(), count_ch.sample_project.unique())
 
+    SYNC_MULTIQC(multiqc_ch.html_report, project_id_ch.unique())
+    
     webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
 
     md5sum_ch = MD5SUM(webpack_ch.project_id)

@@ -28,7 +28,7 @@ process GEN_FLEX_CONFIG {
     }
 
     """
-    echo \"\"\"[gene expression]
+    echo \"\"\"[gene-expression]
     reference,$transcriptome
     probeset,$probeset
     [libraries]

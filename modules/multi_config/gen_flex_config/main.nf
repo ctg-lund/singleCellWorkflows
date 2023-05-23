@@ -33,7 +33,7 @@ process GEN_FLEX_CONFIG {
     fastq_id,fastqs,feature_types
     $Sample_ID,$params.outdir/$Sample_Project/fastq,Gene Expression
     \$sample_header
-    \$(cat $split_multiplex)
+    \$(awk -F \',\' 'BEGIN {OFS=\",\"} {print \$1,\$2}' $split_multiplex)
     \"\"\" > config.csv
     """
 }

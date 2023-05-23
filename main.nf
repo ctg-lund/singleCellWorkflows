@@ -5,7 +5,7 @@ nextflow.enable.dsl=2
 include { SCRNASEQ } from "./subworkflows/scrnaseq.nf"
 include { FLEX_SCRNASEQ } from "./subworkflows/flexscrnaseq.nf"
 include { SCCITESEQ } from "./subworkflows/scciteseq.nf"
-include { SCATAC } from "./subworkflows/scatac.nf"
+include { SC_ATAC } from "./subworkflows/scatac.nf"
 
 
 workflow {

@@ -1,4 +1,4 @@
-process COUNT-ATAC {
+process COUNT_ATAC {
 
 	publishDir "$params.outdir/${project_id}/2_count/", mode: "move", pattern: "$sample_id/outs/*"
 

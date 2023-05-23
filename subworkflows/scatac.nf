@@ -2,7 +2,7 @@
 samplesheet = file(params.samplesheet)
 
 // Import modules
-include { COUNT-ATAC } from "../modules/cellranger/count-atac/main"
+include { COUNT_ATAC } from "../modules/cellranger/count-atac/main"
 include { FASTQC } from "../modules/fastqc/main"
 include { MULTIQC } from "../modules/multiqc/main"
 include { SUMMARIZE_COUNT } from "../modules/summarize_count/main"
@@ -32,7 +32,7 @@ workflow SC_ATAC {
 
 	no_file_ch = file(params.feature_reference)
 	
-	count_ch = COUNT-ATAC(sample_info_ch, no_file_ch)
+	count_ch = COUNT_ATAC(sample_info_ch, no_file_ch)
 
 	multiqc_ch = MULTIQC(count_ch.done.collect(), project_id_ch.unique())
 

@@ -30,7 +30,7 @@ process GEN_FLEX_CONFIG {
     """
     echo \"\"\"[gene-expression]
     reference,$transcriptome
-    probeset,$probeset
+    probe-set,$probeset
     [libraries]
     fastq_id,fastqs,feature_types
     $Sample_ID,$params.outdir/$Sample_Project/fastq,Gene Expression

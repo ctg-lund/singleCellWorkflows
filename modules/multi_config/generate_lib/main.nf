@@ -27,7 +27,9 @@ process GENERATE_LIB_CSV{
 
         } else if (libtype[i] == 'crispr'){
             library="CRISPR Guide Capture"
-        } else {
+        } else if (libtype[i] == 'atac'){
+            library="Chromatin Accessibility"
+        }else {
             library="Gene Expression"
         }
         lines +=params.outdir+"/"+Sample_Project[0]+"/fastq,"+Sample_ID[i]+","+library+"\n"

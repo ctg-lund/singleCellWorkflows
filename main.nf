@@ -6,6 +6,7 @@ include { SCRNASEQ } from "./subworkflows/scrnaseq.nf"
 include { FLEX_SCRNASEQ } from "./subworkflows/flexscrnaseq.nf"
 include { SCCITESEQ } from "./subworkflows/scciteseq.nf"
 include { SC_ATAC } from "./subworkflows/scatac.nf"
+include { SC_ARC } from "./subworkflows/scarc.nf"
 
 
 workflow {
@@ -18,6 +19,8 @@ workflow {
 		SCCITESEQ()
 	} else if (params.analysis == 'scatac-10x') {
 		SC_ATAC()
+	} else if (params.analysis == 'scarc-10x') {
+		SC_ARC()
 	} else {
 		println "ERROR: No valid analysis type selected"
 	}

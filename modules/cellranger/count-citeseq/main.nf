@@ -30,7 +30,6 @@ process COUNT {
 	"""
 	cellranger count \\
 	     --id=$Sample_ID \\
-	     --sample=$Sample_ID \\
 		 --project=$Sample_Project \\
 	     --transcriptome=$genome \\
          --feature-ref=$feature_reference \\

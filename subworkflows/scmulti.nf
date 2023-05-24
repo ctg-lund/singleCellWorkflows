@@ -15,7 +15,7 @@ include { MULTI } from "../modules/cellranger/multi/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 
-workflow FLEX_SCRNASEQ{
+workflow SCMULTI{
 
 	sheet_ch = SPLITSHEET(samplesheet, params.analysis)
 

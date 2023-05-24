@@ -36,7 +36,7 @@ process GENERATE_LIB_CSV{
 
     }
     """
-    echo \"\"\"fastqs,sample,library_type,
+    echo \"\"\"fastqs,sample,library_type
 ${lines} \"\"\" > library.csv
     """
 }

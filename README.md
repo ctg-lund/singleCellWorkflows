@@ -14,6 +14,10 @@ In production:
 ```
 nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis <scrna-10x/scflex-10x/scciteseq-10x>
 ```
+If you are using custom references:
+```
+nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis <scrna-10x/scflex-10x/scciteseq-10x> --custom_genome </path/to/custome_genome>
+```
 Testing:
 ```bash
 nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \

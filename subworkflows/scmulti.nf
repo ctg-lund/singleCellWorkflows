@@ -30,9 +30,7 @@ workflow FLEX_SCRNASEQ{
 	
 	FASTQC(sample_fastqc_ch)
 
-	split_multi_ch = SPLIT_MULTIPLEX_SHEET(sheet_ch.flex, sample_info_ch)
-
-	config_ch = GEN_FLEX_CONFIG(split_multi_ch, sample_info_ch)
+	config_ch = GENERATE_MULTI_CONFIG(sample_info_ch)
 
 	multi_ch = MULTI(config_ch)
 }

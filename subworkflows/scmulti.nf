@@ -9,8 +9,7 @@ include { MD5SUM } from "../modules/md5sum/main"
 include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 // Sample sheet modules
 include { SPLITSHEET } from "../modules/split_sheet/main"
-include { SPLIT_MULTIPLEX_SHEET } from "../modules/multi_config/split_multiplex/main"
-include { GEN_FLEX_CONFIG } from "../modules/multi_config/gen_flex_config/main"
+include { GENERATE_MULTI_CONFIG } from "../modules/multi_config/gen_multi_config/main"
 include { MULTI } from "../modules/cellranger/multi/main"
 // Deliverables
 include { DELIVER_PROJ } from "../modules/deliver/main"

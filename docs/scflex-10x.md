@@ -35,5 +35,11 @@ To execute the workflow, use the following command:
 ```
 nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis scflex-10x
 ```
-
+Or if using custom probes:
+```
+nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis scflex-10x --custom_genome </path/to/custom_genome> --custom_probes </path/to/custom_probes>
+```
 Replace `</path/to/your/samplesheet.csv>` with the actual path to your SampleSheet.csv file. The `--analysis` option should be set to `scflex-10x` to indicate the pipeline to use for analysis.
+
+## Note if using custom probes
+You will need to construct both a reference genome and a reference probe set. Until I have set up a guide for that, contact 10X for more information.

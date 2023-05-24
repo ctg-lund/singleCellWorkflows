@@ -5,7 +5,8 @@ process SYNC_MULTIQC {
 
     script:
     """
-    cp -v $multiqc_report $params.ctgqc/$project_id/multiqc_report.html
+    mkdir -p $params.ctgqc/projects/$project_id
+    cp  $multiqc_report $params.ctgqc/projects/$project_id/multiqc_report.html
     """
     stub:
     """

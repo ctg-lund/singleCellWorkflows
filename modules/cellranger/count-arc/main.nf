@@ -27,7 +27,6 @@ process COUNT_ARC {
 	"""
 	cellranger-arc count \\
 	     --id=$Sample_ID \\
-		 --project=$Sample_Project \\
 	     --transcriptome=$genome \\
          --libraries=$library \\
 		 --localcores=19 --localmem=120 \\

@@ -41,7 +41,6 @@ process COUNT_ATAC {
 	     --id=$sample_id \\
 	     --fastqs=$params.outdir/$project_id/fastq \\
 	     --sample=$sample_id \\
-		 --project=$project_id \\
 	     --reference=$genome \\
 		--localcores=19 --localmem=120 \\
 		 $forcecells $intron_argument

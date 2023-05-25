@@ -38,5 +38,6 @@ process GENERATE_LIB_CSV{
     """
     echo \"\"\"fastqs,sample,library_type
 ${lines} \"\"\" > library.csv
+    sed -i '$ d' library.csv # remove last line
     """
 }

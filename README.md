@@ -1,6 +1,11 @@
 # CTG singleCellWorkflows
+
+<img src="images/singleCellLogo.png" alt="drawing" width="400"/>
+
 ## Introduction
-![Logo](images/singleCellLogo.png "Logo")
+
+
+
 Here are the single cell pipelines used by Center For Translational Genomics (CTG). They are built according to the official documentations provided by 10X genomics.
 
 This pipeline does not parsing of input. We use our [samplesheet generator](https://github.com/ctg-lund/SampleSheetGenerator) to create and parse valid samplesheets.

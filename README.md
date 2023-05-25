@@ -6,7 +6,7 @@ Here are the single cell pipelines used by Center For Translational Genomics (CT
 ## Status for workflows
 [![10X scRNASEQ](https://img.shields.io/badge/10X-scRNAseq-brightgreen)](/subworkflows/scrnaseq.nf)
 [![10X scCiteSeq](https://img.shields.io/badge/10X-scCiteSeq-brightgreen)](/subworkflows/scciteseq.nf) 
-[![10X VDJ](https://img.shields.io/badge/10X-VDJ-red)](/) [![10X Flex](https://img.shields.io/badge/10X-Flex-brightgreen)](/subworkflows/flexscrnaseq.nf)
+[![10X VDJ](https://img.shields.io/badge/10X-VDJ-brightgreen)](/subworkflows/scmulti.nf) [![10X Flex](https://img.shields.io/badge/10X-Flex-brightgreen)](/subworkflows/flexscrnaseq.nf)
 [![10X ARC](https://img.shields.io/badge/10X-ARC-brightgreen)](/subworkflows/scarc.nf)[![10X ATAC](https://img.shields.io/badge/10X-ATAC-brightgreen)](/subworkflows/scatac.nf)
 
 ## Quick start

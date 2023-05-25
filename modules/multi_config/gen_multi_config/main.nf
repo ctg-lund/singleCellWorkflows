@@ -2,9 +2,8 @@ process GENERATE_MULTI_CONFIG{
     input:
         tuple val(Sample_ID), val(Sample_Species), val(Sample_Project), val(sample_pair), val(libtype)
     output:
-        path 'library.csv', emit: library
-        val sample_name, emit: sample_name
-        val sample_project, emit: sample_project
+        path 'config.csv', emit: library
+        tuple val(sample_name), val(sample_project)
     script:
     lines=''
     // The ctg way

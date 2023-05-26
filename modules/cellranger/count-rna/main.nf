@@ -4,7 +4,6 @@ process COUNT {
 
 	input: 
         tuple val(sample_id), val(sample_species), val(force), val(cellranger_aggregate), val(project_id)
-		path config
 
 	output:
         file "${sample_id}/outs/*" 

@@ -33,11 +33,11 @@ Special case is `Sample_Source` which need to match a sample from the 10X_Data s
 To execute the workflow, use the following command:
 
 ```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis scflex-10x
+nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv>
 ```
 Or if using custom probes:
 ```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis scflex-10x --custom_genome </path/to/custom_genome> --custom_probes </path/to/custom_probes>
+nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --custom_genome </path/to/custom_genome> --custom_probes </path/to/custom_probes>
 ```
 Replace `</path/to/your/samplesheet.csv>` with the actual path to your SampleSheet.csv file. The `--analysis` option should be set to `scflex-10x` to indicate the pipeline to use for analysis.
 

@@ -25,7 +25,7 @@ Explanation of each column:
 To execute the workflow, use the following command:
 
 ```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis scrna-10x
+nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> 
 ```
 
 Replace `</path/to/your/samplesheet.csv>` with the actual path to your SampleSheet.csv file. The `--analysis` option should be set to `scrna-10x` to indicate the pipeline to use for analysis.

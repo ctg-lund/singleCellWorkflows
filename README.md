@@ -19,11 +19,11 @@ This pipeline does not parsing of input. We use our [samplesheet generator](http
 ## Quick start
 In production:
 ```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis <scrna-10x/scflex-10x/scciteseq-10x>
+nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv>
 ```
 If you are using custom references:
 ```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --analysis <scrna-10x/scflex-10x/scciteseq-10x> --custom_genome </path/to/custome_genome>
+nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --custom_genome </path/to/custome_genome>
 ```
 Testing:
 ```bash

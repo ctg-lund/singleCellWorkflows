@@ -2,16 +2,19 @@
 samplesheet = file(params.samplesheet)
 
 // Import modules
-include { COUNT_ATAC } from "../modules/cellranger/count-atac/main"
+// QC Modules
 include { FASTQC } from "../modules/fastqc/main"
 include { MULTIQC } from "../modules/multiqc/main"
-include { SUMMARIZE_COUNT } from "../modules/summarize_count/main"
-include { MD5SUM } from "../modules/md5sum/main"
-include { DELIVER_PROJ } from "../modules/deliver/main"
-include { SPLITSHEET } from "../modules/split_sheet/main"
-include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
+// Cellranger Modules
+include { COUNT_ATAC } from "../modules/cellranger/count-atac/main"
+// Parsing Modules
+include { SPLITSHEET } from "../modules/split_sheet/main"
+// Deliverables
+include { MD5SUM } from "../modules/md5sum/main"
+include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 include { PUBLISH_MANIFEST } from '../modules/publish_manifest/main'
+include { DELIVER_PROJ } from "../modules/deliver/main"
 
 workflow SC_ATAC {
 	// Parse samplesheet

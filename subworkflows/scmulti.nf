@@ -10,6 +10,7 @@ include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 // Sample sheet modules
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { GENERATE_MULTI_CONFIG } from "../modules/multi_config/gen_multi_config/main"
+// Sample processing modules
 include { MULTI } from "../modules/cellranger/multi/main"
 // Deliverables
 include { DELIVER_PROJ } from "../modules/deliver/main"

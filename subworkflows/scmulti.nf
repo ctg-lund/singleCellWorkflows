@@ -17,7 +17,7 @@ include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 
 workflow SCMULTI{
 
-	sheet_ch = SPLITSHEET(samplesheet, params.analysis)
+	sheet_ch = SPLITSHEET(samplesheet, 'scmulti-10x')
 
 	sample_info_ch = sheet_ch.data
         .splitCsv(header:true)

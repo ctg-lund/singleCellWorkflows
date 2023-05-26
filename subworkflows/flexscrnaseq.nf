@@ -18,7 +18,7 @@ include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 
 workflow FLEX_SCRNASEQ{
 
-	sheet_ch = SPLITSHEET(samplesheet, params.analysis)
+	sheet_ch = SPLITSHEET(samplesheet, 'scflex-10x')
 
 	sample_info_ch = sheet_ch.data
 		.splitCsv(header:true)

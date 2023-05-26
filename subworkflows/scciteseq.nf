@@ -17,7 +17,7 @@ include { COUNT } from "../modules/cellranger/count-citeseq/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 workflow SCCITESEQ {
-    sheet_ch = SPLITSHEET(samplesheet, params.analysis)
+    sheet_ch = SPLITSHEET(samplesheet, 'scciteseq-10x')
 
     // all samplesheet info
     sample_info_ch = sheet_ch.data
@@ -39,7 +39,7 @@ workflow SCCITESEQ {
 
     multiqc_ch = MULTIQC(count_ch.done.collect(), count_ch.sample_project.unique())
 
-    SYNC_MULTIQC(multiqc_ch.html_report, project_id_ch.unique())
+    SYNC_MULTIQC(multiqc_ch.html_report, multiqc_ch.project_id)
     
     webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
 

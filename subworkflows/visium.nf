@@ -17,7 +17,7 @@ include { SPLITSHEET } from "../modules/split_sheet/main"
 
 workflow VISIUM {
     // Parse samplesheet
-	sheet_ch = SPLITSHEET(samplesheet, params.analysis)
+	sheet_ch = SPLITSHEET(samplesheet, 'scvisium-10x')
 
 	// all samplesheet info
 	sample_info_ch = sheet_ch.data

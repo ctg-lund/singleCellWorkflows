@@ -17,7 +17,7 @@ include { COUNT_ARC } from "../modules/cellranger/count-arc/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 workflow SC_ARC {
-    sheet_ch = SPLITSHEET(samplesheet, params.analysis)
+    sheet_ch = SPLITSHEET(samplesheet, 'scarc-10x')
 
     // all samplesheet info
     sample_info_ch = sheet_ch.data

@@ -14,7 +14,7 @@ include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 
 workflow SC_ATAC {
 	// Parse samplesheet
-	sheet_ch = SPLITSHEET(samplesheet, params.analysis)
+	sheet_ch = SPLITSHEET(samplesheet, 'scatac-10x')
 
 	// all samplesheet info
 	sample_info_ch = sheet_ch.data
@@ -24,21 +24,16 @@ workflow SC_ATAC {
 	sample_fastqc_ch = sheet_ch.data
 		.splitCsv(header:true)
 		.map { row -> tuple( row.Sample_ID, row.Sample_Project) }
-	project_id_ch = sheet_ch.data
-		.splitCsv(header:true)
-		.map { row ->  row.Sample_Project  }
 
 	FASTQC(sample_fastqc_ch)
-
-	no_file_ch = file(params.feature_reference)
 	
-	count_ch = COUNT_ATAC(sample_info_ch, no_file_ch)
+	count_ch = COUNT_ATAC(sample_info_ch)
 
-	multiqc_ch = MULTIQC(count_ch.done.collect(), project_id_ch.unique())
+	multiqc_ch = MULTIQC(count_ch.done.collect(), count_ch.project_id.unique())
 
-	SYNC_MULTIQC(multiqc_ch.html_report, project_id_ch.unique())
+	SYNC_MULTIQC(multiqc_ch.html_report, multiqc_ch.project_id)
 
-	pack_websummaries_ch = PACK_WEBSUMMARIES(multiqc_ch.html_report, multiqc_ch.project_id)
+	pack_websummaries_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
 	
 	md5sum_ch = MD5SUM(pack_websummaries_ch.project_id)
 

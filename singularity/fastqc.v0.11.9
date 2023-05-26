@@ -1,0 +1,29 @@
+Bootstrap:docker
+From:nfcore/base
+
+%labels
+	MAINTAINER Jacob Karlstrom <jacob.karlstrom@med.lu.se>
+	DESCRIPTION Singularity container FASTQC-v0.11.9
+	VERSION 0.11.9
+
+%environment
+	PATH=/opt/bin:$PATH
+
+%post
+	rm -rf /var/lib/apt/lists/*
+	apt -y clean
+	apt -y update
+	apt -y install libz-dev build-essential gettext cmake libxml2-dev libcurl4-openssl-dev libssl-dev make libbz2-dev libboost-dev python3-pip sudo unzip
+
+	mkdir -p /usr/share/man/man1
+
+	sudo apt -y install default-jre
+
+	# download/install fastqc
+	cd /opt/bin/
+	wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip
+	unzip fastqc_v0.11.9.zip
+	chmod -R 777 FastQC
+	cd -
+
+        ln -s /opt/bin/FastQC/fastqc /opt/bin/

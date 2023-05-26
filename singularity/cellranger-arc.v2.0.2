@@ -1,0 +1,33 @@
+Bootstrap:docker
+From:nfcore/base
+
+%labels
+	MAINTAINER Jacob Karlstr�m <jacob.karlstrom@med.lu.se>
+	DESCRIPTION Singularity container Cellranger-ATAC-v2.1.0
+
+%environment
+	PATH=/opt/bin:/opt/conda/envs/ngs-tools/bin/:/opt/cellranger-arc-2.0.2:/opt/bin:$PATH
+
+%post
+	rm -rf /var/lib/apt/lists/*
+	apt -y clean
+	apt -y update
+	apt -y install libz-dev build-essential gettext cmake libxml2-dev libcurl4-openssl-dev libssl-dev make libbz2-dev libboost-dev python3-pip sudo unzip
+
+	mkdir -p /usr/share/man/man1
+
+	sudo apt -y install default-jre
+
+	mkdir -p /opt/bin
+
+
+	# WGET CELLRANGER ARC v2.0.2
+	cd /opt
+	wget -O cellranger-arc-2.0.2.tar.gz "https://cf.10xgenomics.com/releases/cell-arc/cellranger-arc-2.0.2.tar.gz?Expires=1684962889&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9jZi4xMHhnZW5vbWljcy5jb20vcmVsZWFzZXMvY2VsbC1hcmMvY2VsbHJhbmdlci1hcmMtMi4wLjIudGFyLmd6IiwiQ29uZGl0aW9uIjp7IkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjg0OTYyODg5fX19XX0_&Signature=XmpKd4VfmT7kRvl1PIh5XYai9s8PZ9OtzoKA50rx--Vhqq6V-sEjc7tcRl4BTkfCQrsQRT~RkXzX3AVqKeoklVaQz39aRXxf20eP7fU3cyP9EEP7yhbwHpCsE~fCsH8ss2INFYEH7N0pocbAgujw0lMLmbOS5DQ7Mhc79vxbwqkOWQYW~kJlEhssXDg9btkVt9m9bqzPO2ExIlxQc07ceKeWJIhaBjRRB96SZ8Rmwf7EGfz~2Li~MIp-MOIo9JP6yos05uWgIo2WwBqVPRknIzDOsfQ0ubL5JsYpcFP0zFTFJBM~jB91TosnkgH3QHOr520BzJPXcOxZQl3uqsGaLg__&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA"
+
+
+	# TAR CELLRANGER-ARC v2.0.2
+	tar -zxvf cellranger-arc-2.0.2.tar.gz
+
+
+	cd -

@@ -16,6 +16,8 @@ include { COUNT_ARC } from "../modules/cellranger/count-arc/main"
 // Deliverables
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
+include { PUBLISH_MANIFEST } from '../modules/publish_manifest/main'
+
 workflow SC_ARC {
     sheet_ch = SPLITSHEET(samplesheet, 'scarc-10x')
 
@@ -41,7 +43,9 @@ workflow SC_ARC {
     
     webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
 
-    md5sum_ch = MD5SUM(webpack_ch.project_id)
+    publish_ch = PUBLISH_MANIFEST(webpack_ch.project_id)
+
+	md5sum_ch = MD5SUM(publish_ch)
 
     DELIVER_PROJ(md5sum_ch.project_id)
 }

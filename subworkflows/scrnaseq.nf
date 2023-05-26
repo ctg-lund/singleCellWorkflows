@@ -9,12 +9,12 @@ samplesheet = file(params.samplesheet)
 include { COUNT } from "../modules/cellranger/count-rna/main"
 include { FASTQC } from "../modules/fastqc/main"
 include { MULTIQC } from "../modules/multiqc/main"
-include { SUMMARIZE_COUNT } from "../modules/summarize_count/main"
 include { MD5SUM } from "../modules/md5sum/main"
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
+include { PUBLISH_MANIFEST } from '../modules/publish_manifest/main'
 
 workflow SCRNASEQ {
 	// Parse samplesheet
@@ -40,9 +40,11 @@ workflow SCRNASEQ {
 
 	SYNC_MULTIQC(multiqc_ch.html_report, project_id_ch.unique())
 
-	pack_websummaries_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
+	webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
 	
-	md5sum_ch = MD5SUM(pack_websummaries_ch.project_id)
+	publish_ch = PUBLISH_MANIFEST(webpack_ch.project_id)
+
+	md5sum_ch = MD5SUM(publish_ch)
 
 	deliver_auto_ch = DELIVER_PROJ(md5sum_ch.project_id)
 }

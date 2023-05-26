@@ -8,7 +8,7 @@
 
 Here are the single cell pipelines used by Center For Translational Genomics (CTG). They are built according to the official documentations provided by 10X genomics.
 
-This pipeline does not parsing of input. We use our [samplesheet generator](https://github.com/ctg-lund/SampleSheetGenerator) to create and parse valid samplesheets.
+This pipeline does not do any parsing of input. We use our [samplesheet generator](https://github.com/ctg-lund/SampleSheetGenerator) to create and parse valid samplesheets.
 
 ## Status for workflows
 [![10X scRNASEQ](https://img.shields.io/badge/10X-scRNAseq-brightgreen)](/subworkflows/scrnaseq.nf)

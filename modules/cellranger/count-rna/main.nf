@@ -16,7 +16,7 @@ process COUNT {
 	if ( force != "n" && force != "null") {
 	   forcecells="--force-cells=" + force }
 	if ( params.intron_mode != 'true' ) {
-		intron_argument="--include-introns=false"
+		intron_argument="--include-introns false"
 	} else {
 		intron_argument=""
 	}
@@ -36,11 +36,11 @@ process COUNT {
 
 	"""
 	cellranger count \\
-	     --id=$sample_id \\
-	     --fastqs=$params.outdir/$project_id/fastq \\
-	     --sample=$sample_id \\
-	     --transcriptome=$genome \\
-		--localcores=19 --localmem=120 \\
+	     --id $sample_id \\
+	     --fastqs $params.outdir/$project_id/fastq \\
+	     --sample $sample_id \\
+	     --transcriptome $genome \\
+		--localcores=19 --localmem 120 \\
 		 $forcecells $intron_argument
 
 	"""

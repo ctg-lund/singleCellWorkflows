@@ -16,6 +16,8 @@ include { COUNT } from "../modules/cellranger/count-citeseq/main"
 // Deliverables
 include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
+include { PUBLISH_MANIFEST } from '../modules/publish_manifest/main'
+
 workflow SCCITESEQ {
     sheet_ch = SPLITSHEET(samplesheet, 'scciteseq-10x')
 
@@ -43,7 +45,9 @@ workflow SCCITESEQ {
     
     webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
 
-    md5sum_ch = MD5SUM(webpack_ch.project_id)
+    publish_ch = PUBLISH_MANIFEST(webpack_ch.project_id, 'scciteseq-10x')
+
+	md5sum_ch = MD5SUM(publish_ch)
 
     DELIVER_PROJ(md5sum_ch.project_id)
 }

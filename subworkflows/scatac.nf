@@ -39,7 +39,7 @@ workflow SC_ATAC {
 
 	webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
 	
-	publish_ch = PUBLISH_MANIFEST(webpack_ch.project_id)
+	publish_ch = PUBLISH_MANIFEST(webpack_ch.project_id, 'scatac-10x')
 
 	md5sum_ch = MD5SUM(publish_ch)
 

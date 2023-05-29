@@ -57,6 +57,6 @@ process PACK_WEBSUMMARIES{
     '''
     stub:
     """
-    echo "Pack web summaries"
+    touch web_summaries.tar
     """
 }

@@ -55,4 +55,8 @@ process PACK_WEBSUMMARIES{
     # remove the temporary directory
     rm -rf "$temp_dir"
     '''
+    stub:
+    """
+    echo "Pack web summaries"
+    """
 }

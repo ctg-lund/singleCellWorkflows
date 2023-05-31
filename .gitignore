@@ -1,2 +1,3 @@
 .nextflow*
 work
+examples/output/*/3_summaries/pipeline

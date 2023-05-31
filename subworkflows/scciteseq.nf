@@ -4,19 +4,14 @@ samplesheet = file(params.samplesheet)
 // Import modules
 // QC Modules
 include { FASTQC } from "../modules/fastqc/main"
-include { MULTIQC } from "../modules/multiqc/main"
-include { MD5SUM } from "../modules/md5sum/main"
-include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 // Input Parsing
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_FEATURE_REFERENCE } from "../modules/filter_featureref/main"
 include { GENERATE_LIB_CSV } from "../modules/multi_config/generate_lib/main"
 // Sample Processing
 include { COUNT } from "../modules/cellranger/count-citeseq/main"
-// Deliverables
-include { DELIVER_PROJ } from "../modules/deliver/main"
-include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
-include { PUBLISH_MANIFEST } from '../modules/publish_manifest/main'
+// FINISH MODULE
+include { FINISH_PROJECTS } from "./finish.nf"
 
 workflow SCCITESEQ {
     sheet_ch = SPLITSHEET(samplesheet, 'scciteseq-10x')
@@ -39,15 +34,8 @@ workflow SCCITESEQ {
 
     count_ch = COUNT(lib_ch.library, feature_reference_ch, lib_ch.sample_name, lib_ch.sample_project, lib_ch.sample_species )
 
-    multiqc_ch = MULTIQC(count_ch.done.collect(), count_ch.sample_project.unique())
-
-    SYNC_MULTIQC(multiqc_ch.html_report, multiqc_ch.project_id)
-    
-    webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
-
-    publish_ch = PUBLISH_MANIFEST(webpack_ch.project_id, 'scciteseq-10x')
-
-	md5sum_ch = MD5SUM(publish_ch)
-
-    DELIVER_PROJ(md5sum_ch.project_id)
+    FINISH_PROJECTS (
+			count_ch.project_id.unique(),
+			'scciteseq-10x'
+		)
 }

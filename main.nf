@@ -22,10 +22,10 @@ workflow {
 		.collect()
 	
 	if (pipeline_ch.contains('scrna-10x')) {
-		SCRNASEQ()
+		rna_workflow = SCRNASEQ()
 	} 
 	if (pipeline_ch.contains('scflex-10x')) {
-		FLEX_SCRNASEQ()
+		flex_worfklow = FLEX_SCRNASEQ()
 	}
 	if (pipeline_ch.contains('scciteseq-10x')) {
 		SCCITESEQ()

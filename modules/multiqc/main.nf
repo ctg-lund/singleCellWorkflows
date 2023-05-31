@@ -2,7 +2,6 @@ process MULTIQC {
     publishDir "$params.outdir/$project_id/1_qc/multiqc", mode: 'copy', pattern : "*.html"
 
     input:
-        val(count_done)
     	val(project_id)
 
     output:

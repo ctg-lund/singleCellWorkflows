@@ -7,6 +7,8 @@ include { SPLITSHEET } from "../modules/split_sheet/main"
 include { COUNT } from "../modules/cellranger/count-rna/main"
 // QC Modules
 include { FASTQC } from "../modules/fastqc/main"
+// Delivery modules
+include { FINISH_PROJECTS } from "../subworkflows/finish.nf"
 
 workflow SCRNASEQ {
 	main:
@@ -28,8 +30,10 @@ workflow SCRNASEQ {
 		FASTQC(sample_fastqc_ch)
 		
 		count_ch = COUNT(sample_info_ch)
-	emit:
-		project_id = count_ch.project_id.unique()
-		sample_done = count_ch.done.collect()
+
+		FINISH_PROJECTS(
+			count_ch.project_id.unique(),
+			'scrna-10x'
+		)
 
 }

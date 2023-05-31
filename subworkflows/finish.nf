@@ -6,7 +6,7 @@ include { MULTIQC } from "../modules/multiqc/main"
 include { MD5SUM } from "../modules/md5sum/main"
 include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 
-workflow FINISH_PROJECT {
+workflow FINISH_PROJECTS {
     take:
         project_id
         workflow

@@ -31,7 +31,9 @@ Make the necessary changes to the `nextflow.conf` file according to your system 
 
 Once you have completed these steps, you will have successfully set up the project.
 
-## Outdir
+For more information on how to configure the nextflow.config file for the analysis you are interested in, see [the docs folder](/docs/)
+
+## Outdir structure
 The pipeline assumes the following structure when you process the data:
 ```
 outdir (Set from nextflow.config)

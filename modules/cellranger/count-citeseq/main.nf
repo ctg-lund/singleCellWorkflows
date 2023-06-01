@@ -1,4 +1,5 @@
 process COUNT {
+	tag "$Sample_ID"
 
 	publishDir "${params.outdir}/${Sample_Project}/2_count/", mode: "move", pattern: "$Sample_ID/outs/*"
 

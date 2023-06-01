@@ -1,4 +1,5 @@
 process MULTI {
+	tag "$sample_id"
 
 	publishDir "${params.outdir}/${project_id}/2_multi/", mode: "move", pattern: "$sample_id/outs/*"
 

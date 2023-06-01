@@ -1,4 +1,5 @@
 process DELIVER_PROJ {
+	tag "$project_id"
 
 	input:
 		val(project_id)

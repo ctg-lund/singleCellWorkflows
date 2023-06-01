@@ -1,5 +1,5 @@
 process COUNT {
-
+	tag "$sample_id"
 	publishDir "$params.outdir/${project_id}/2_count/", mode: "move", pattern: "$sample_id/outs/*"
 
 	input: 

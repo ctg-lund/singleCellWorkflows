@@ -1,4 +1,5 @@
 process MULTIQC {
+    tag "$project_id"
     publishDir "$params.outdir/$project_id/1_qc/multiqc", mode: 'copy', pattern : "*.html"
 
     input:

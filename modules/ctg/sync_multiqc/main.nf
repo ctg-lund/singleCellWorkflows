@@ -1,4 +1,6 @@
 process SYNC_MULTIQC {
+    tag "$project_id"
+    
     input:
         path multiqc_report
         val project_id

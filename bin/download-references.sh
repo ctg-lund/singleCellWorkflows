@@ -1,3 +1,4 @@
+echo "This will take around 40 GB of space so cancel now if you don't have that much space"
 # VDJ Human reference
 wget https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCh38-alts-ensembl-7.1.0.tar.gz
 # VDJ Mouse reference

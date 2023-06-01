@@ -37,3 +37,6 @@ nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \
 * [10X RNA-seq pipeline](/docs/scrna-10x.md)
 * [10X CiteSeq pipeline](/docs/scciteseq-10x.md)
 * [10X Flex pipeline](/docs/scflex-10x.md)
+* [10X VDJ pipeline](/docs/scmulti-10x.md)
+* [10X ATAC pipeline](/docs/scatac-10x.md)
+* [10X Multiome pipeline](/docs/scarc-10x.md)

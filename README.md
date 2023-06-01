@@ -28,7 +28,7 @@ nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --custom_geno
 Testing:
 ```bash
 nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \
-    --outdir /Users/jacobkarlstrom/Projects/singleCellWorkflows/examples/output \
+    --outdir <local/output/directory> \
     -profile local_dev -stub-run \
 ```
 

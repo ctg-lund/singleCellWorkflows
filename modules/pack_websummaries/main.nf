@@ -1,4 +1,6 @@
 process PACK_WEBSUMMARIES{
+    tag "$project_id"
+    
     publishDir "$params.outdir/$project_id/3_summaries/cellranger", mode: 'move', pattern : "web_summaries.tar"
 
     input:

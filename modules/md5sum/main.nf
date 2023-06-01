@@ -1,4 +1,5 @@
 process MD5SUM {
+	tag "$project_id"
 
 	input:
 		val project_id

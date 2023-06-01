@@ -1,4 +1,5 @@
 process PUBLISH_MANIFEST {
+    tag "$project_id"
     input:
     val project_id
     val subworkflow

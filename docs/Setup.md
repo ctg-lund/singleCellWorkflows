@@ -5,15 +5,12 @@ Before proceeding with the installation, make sure you have the following requir
 
 ### Native Dependencies
 * nextflow (version > 22.10.6.5843)
+* Singularity
 * openjdk (version > 11.0.13)
 * git (only needed to download the repository)
 
 ### Singularity Containers
-The following singularity containers should be available:
-
-* cellranger (version > 7.1)
-* FastQC
-* Multiqc (dev variant as of 2023-05-20; other versions may cause crashes with cellranger output)
+We have our singularity recipes in the singularity folder of this project. See [Sylabs official](https://docs.sylabs.io/guides/3.0/user-guide/build_a_container.html) documentation on how to build singularity containers.
 
 ## Installation
 To set up the project, follow these steps:
@@ -90,3 +87,6 @@ output
  ┃ ┃ ┃ ┗ web_summaries.tar
  ┃ ┗ ctg-md5.project2.txt
 ```
+
+## 10X References
+We use the prebuilt references from 10X genomics which can be found [here](https://support.10xgenomics.com/single-cell-vdj/software/downloads/latest). To make custom references, we use our [add2ref script](/bin/ctg-cellranger-add2ref.sh), which is hardcoded to work on our systems.

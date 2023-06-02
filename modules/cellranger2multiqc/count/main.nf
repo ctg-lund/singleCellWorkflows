@@ -1,10 +1,10 @@
-process CELLRANGER_ARC_TO_MULTIQC{
+process CELLRANGER_COUNT_TO_MULTIQC{
     input:
     val sample_id
     val project_id
     val pipeline
     output:
-    val project_id
+    tuple val(project_id), emit: project_id
     script:
 
     number_of_samples = sample_id.size() -1
@@ -42,5 +42,10 @@ process CELLRANGER_ARC_TO_MULTIQC{
     echo \"\"\"
         \$data_section
     \"\"\" >> $params.outdir/$project_id/1_qc/multiqc/multiqc_mqc.yaml
+    """
+
+    stub: 
+    """
+    echo hippity hoppity
     """
 }

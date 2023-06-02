@@ -13,6 +13,7 @@ process COUNT {
         path "${Sample_ID}/outs/*" 
 		val ('x'), emit: done
 		val Sample_Project, emit: project_id
+		val Sample_ID, emit: sample_id
 
 	script:
 	// Get sample_specieserence

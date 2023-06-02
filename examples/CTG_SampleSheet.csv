@@ -25,6 +25,8 @@ sample-12,human,project7,n,n,3,gex,scmulti-10x
 sample-13,human,project7,n,n,3,tcr,scmulti-10x
 sample-14,human,project7,n,n,3,bcr,scmulti-10x
 sample-15,human,project8,n,n,n,atac,scatac-10x
+sample-16,human,project9,n,n,4,atac,scarc-10x
+sample-17,human,project9,n,n,4,gex,scarc-10x
 [10X_Flex_Settings],,,,,,,,
 sample_id,probe_barcode,Sample_Source,,,,,,
 sample1,BC001|BC002,sample_7,,,,,,

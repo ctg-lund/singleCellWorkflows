@@ -2,10 +2,18 @@ process CELLRANGER_ARC_TO_MULTIQC{
     input:
     val sample_id
     val project_id
+    val pipeline
     output:
     val project_id
     script:
+
     number_of_samples = sample_id.size() -1
+
+    if (pipeline == 'arc'){
+        summary="summary.csv"
+    } else {
+        summary="metrics_summary.csv"
+    }
     """
     # Create the multiqc folder
     mkdir -p $params.outdir/$project_id/1_qc/multiqc
@@ -29,7 +37,7 @@ process CELLRANGER_ARC_TO_MULTIQC{
         title: \"Single Cell Workflows Stats\"
         data:
     \"\"\" > $params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml
-        data_section+=\"  \${sample_array[\$i]}: \$(cat $params.outdir/$project_id.csv | python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))')\n    \"
+        data_section+=\"  \${sample_array[\$i]}: \$(cat $params.outdir/$project_id/2_count/\${sample_array[\$i]}/out/$summary | python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))')\n    \"
     done
     echo \"\"\"
         \$data_section

@@ -33,7 +33,11 @@ workflow SC_ARC {
 
     count_ch = COUNT_ARC(lib_ch.library, lib_ch.sample_name, lib_ch.sample_project, lib_ch.sample_species )
 
-    mqc_conf_ch = CELLRANGER_ARC_TO_MULTIQC(count_ch.sample_id.collect(), count_ch.project_id.collect())
+    mqc_conf_ch = CELLRANGER_ARC_TO_MULTIQC(
+        count_ch.sample_id.collect(), 
+        count_ch.project_id.collect(),
+        'arc'
+        )
 
     FINISH_PROJECTS(
 			mqc_conf_ch.project_id.unique(),

@@ -3,13 +3,13 @@ import json
 import sys
 
 # Check if input file name was provided
-if len(sys.argv) < 2:
-    print('Usage: python convert.py file.csv')
+if len(sys.argv) < 3:
+    print('Usage: python convert.py file.csv sample_name')
     sys.exit(1)
 
 # Get input file name from command-line argument
 input_file = sys.argv[1]
-
+sample_name = sys.argv[2]
 # Initialize dictionaries for each category
 cells = {}
 library = {}
@@ -37,9 +37,9 @@ with open(input_file, 'r') as f:
             other[metric_name] = metric_value
 
 # Write dictionaries to JSON files
-with open('cells.json', 'w') as f:
+with open('{}_cells.json'.format(sample_name), 'w') as f:
     json.dump(cells, f, indent=2)
-with open('library.json', 'w') as f:
+with open('{}_library.json'.format(sample_name), 'w') as f:
     json.dump(library, f, indent=2)
-with open('other.json', 'w') as f:
+with open('{}_other.json'.format(sample_name), 'w') as f:
     json.dump(other, f, indent=2)

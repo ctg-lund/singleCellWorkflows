@@ -4,6 +4,7 @@ samplesheet = file(params.samplesheet)
 // Import modules
 // QC Modules
 include { FASTQC } from "../modules/fastqc/main"
+include { CELLRANGER_ARC_TO_MULTIQC } from "../modules/cellranger2multiqc/arc/main"
 // Input Parsing
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_FEATURE_REFERENCE } from "../modules/filter_featureref/main"
@@ -32,8 +33,10 @@ workflow SC_ARC {
 
     count_ch = COUNT_ARC(lib_ch.library, lib_ch.sample_name, lib_ch.sample_project, lib_ch.sample_species )
 
+    mqc_conf_ch = CELLRANGER_ARC_TO_MULTIQC(count_ch.sample_id.collect(), count_ch.project_id.collect())
+
     FINISH_PROJECTS(
-			count_ch.project_id.unique(),
+			mqc_conf_ch.project_id.unique(),
 			'scarc-10x'
 		)
 

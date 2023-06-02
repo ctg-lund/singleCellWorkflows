@@ -4,6 +4,7 @@ samplesheet = file(params.samplesheet)
 // Import modules
 // QC Modules
 include { FASTQC } from "../modules/fastqc/main"
+include { CELLRANGER_MULTI_TO_MULTIQC } from "../modules/cellranger2multiqc/multi/main"
 // Sample sheet modules
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { GENERATE_MULTI_CONFIG } from "../modules/multi_config/gen_multi_config/main"
@@ -30,8 +31,10 @@ workflow SCMULTI{
 
 	multi_ch = MULTI(config_ch)
 
+	mqc_conf_ch = CELLRANGER_MULTI_TO_MULTIQC(multi_ch.project_id.unique())
+
 	FINISH_PROJECTS (
-			multi_ch.project_id.unique(),
+			mqc_conf_ch.project_id.unique(),
 			'scmulti-10x'
 		)
 }

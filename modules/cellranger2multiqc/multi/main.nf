@@ -1,10 +1,10 @@
 process CELLRANGER_MULTI_TO_MULTIQC{
-    publishDir "$params.outdir/3_summaries/cellranger/", mode: 'copy', pattern : "*_mqc.yaml"
+    publishDir "$params.outdir/$project_id/3_summaries/cellranger/", mode: 'copy', pattern : "*_mqc.yaml"
     input:
     val project_id
     output:
-    val project_id, emit: "project_id"
-    tuple path("*_mqc.yaml"), emit: "multiqc_config"
+    val project_id, emit: project_id
+    tuple path("*_mqc.yaml")
     script:
     """
     # Create the multiqc folder
@@ -45,6 +45,8 @@ process CELLRANGER_MULTI_TO_MULTIQC{
 
     stub: 
     """
-    echo hippity hoppity
+    touch cells_mqc.yaml
+    touch library_mqc.yaml
+    touch other_mqc.yaml
     """
 }

@@ -4,6 +4,7 @@ samplesheet = file(params.samplesheet)
 // Import modules
 // QC Modules
 include { FASTQC } from "../modules/fastqc/main"
+include { CELLRANGER_COUNT_TO_MULTIQC } from "../modules/cellranger2multiqc/count/main"
 // Input Parsing
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { FILTER_FEATURE_REFERENCE } from "../modules/filter_featureref/main"
@@ -34,8 +35,14 @@ workflow SCCITESEQ {
 
     count_ch = COUNT(lib_ch.library, feature_reference_ch, lib_ch.sample_name, lib_ch.sample_project, lib_ch.sample_species )
 
+    mqc_conf_ch = CELLRANGER_COUNT_TO_MULTIQC(
+        count_ch.sample_id.collect(), 
+        count_ch.project_id.collect(),
+        'citeseq'
+        )
+
     FINISH_PROJECTS (
-			count_ch.project_id.unique(),
+			mqc_conf_ch.project_id.flatten().unique(),
 			'scciteseq-10x'
 		)
 }

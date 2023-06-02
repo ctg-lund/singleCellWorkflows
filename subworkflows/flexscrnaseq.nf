@@ -3,6 +3,7 @@ samplesheet = file(params.samplesheet)
 
 // QC Modules
 include { FASTQC } from "../modules/fastqc/main"
+include { CELLRANGER_MULTI_TO_MULTIQC } from "../modules/cellranger2multiqc/multi/main"
 // Sample sheet modules
 include { SPLITSHEET } from "../modules/split_sheet/main"
 include { SPLIT_MULTIPLEX_SHEET } from "../modules/multi_config/split_multiplex/main"
@@ -31,8 +32,10 @@ workflow FLEX_SCRNASEQ{
 
 		multi_ch = MULTI(config_ch)
 
+		mqc_conf_ch = CELLRANGER_MULTI_TO_MULTIQC(multi_ch.project_id.unique())
+
 		FINISH_PROJECTS (
-			multi_ch.project_id.unique(),
+			mqc_conf_ch.project_id.unique(),
 			'scflex-10x'
 		)
 }

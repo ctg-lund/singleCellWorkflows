@@ -27,7 +27,7 @@ workflow VISIUM {
     count_ch = SPACECOUNT(sample_info_ch)
 
 	FINISH_PROJECTS(
-			count_ch.project_id.unique(),
+			count_ch.project_id.collect().flatten().unique(),
 			'scvisium-10x'
 		)
 }

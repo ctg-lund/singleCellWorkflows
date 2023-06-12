@@ -40,7 +40,7 @@ workflow SC_ARC {
         )
 
     FINISH_PROJECTS(
-			mqc_conf_ch.flatten().unique(),
+			mqc_conf_ch.collect().flatten().unique(),
 			'scarc-10x'
 		)
 

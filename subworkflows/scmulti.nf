@@ -34,7 +34,7 @@ workflow SCMULTI{
 	mqc_conf_ch = CELLRANGER_MULTI_TO_MULTIQC(multi_ch.project_id.unique())
 
 	FINISH_PROJECTS (
-			mqc_conf_ch.project_id.unique(),
+			mqc_conf_ch.project_id.collect().flatten().unique(),
 			'scmulti-10x'
 		)
 }

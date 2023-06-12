@@ -1,9 +1,10 @@
 process SPACECOUNT {
+	publishDir "${params.outdir}/${Sample_Project}/2_count", mode: 'move'
     input:
         tuple val(Sample_ID), val(Sample_Project), val(species), val(cytaimage), val(darkimage), val(image), val(slide), val(area)
     output:
-        file "${sample_id}/outs/*"
-		val project_id, emit: project_id
+        file "${Sample_ID}/outs/*"
+		val Sample_Project, emit: project_id
     script:
     if ( sample_species == "Human" || sample_species == "human") {
 	   genome=params.human 
@@ -22,21 +23,21 @@ process SPACECOUNT {
 	   genome="ERR" }
 	// This section will generate the arguments
 	if ( cytaimage != "n") {
-		cyta_argument = "--cytaimage=",params.outdir,Sample_Project,'/metadata/',cytaimage
-		probe_argument = "--probe-set=",probe_set
+		cyta_argument = "--cytaimage="+params.outdir+Sample_Project+'/metadata/'+cytaimage
+		probe_argument = "--probe-set="+probe_set
 		}
 	else {
 		cyta_argument = ""
 		probe_argument = ""
 	}
 	if ( darkimage != "n") {
-		dark_argument = "--darkimage=",params.outdir,Sample_Project,'/metadata/',darkimage
+		dark_argument = "--darkimage="+params.outdir+Sample_Project+'/metadata/'+darkimage
 		}
 	else {
 		dark_argument = ""
 	}
 	if ( image != "n") {
-		image_argument = "--image=",params.outdir,Sample_Project,'/metadata/',image
+		image_argument = "--image="+params.outdir+Sample_Project+'/metadata/'+image
 		}
 	else {
 		image_argument = ""

@@ -27,7 +27,7 @@ sample-14,human,project7,n,n,3,bcr,scmulti-10x,n,n,n,n,n
 sample-15,human,project8,n,n,n,atac,scatac-10x,n,n,n,n,n
 sample-16,human,project9,n,n,4,atac,scarc-10x,n,n,n,n,n
 sample-17,human,project9,n,n,4,gex,scarc-10x,n,n,n,n,n
-sample-18,human,project9,n,n,n,gex,scvisium-10x,cytaimage,darkimage,image,slide,slide_area
+sample-18,human,project10,n,n,n,gex,scvisium-10x,cytaimage,darkimage,image,slide,slide_area
 [10X_Flex_Settings],,,,,,,,
 sample_id,probe_barcode,Sample_Source,,,,,,
 sample1,BC001|BC002,sample_7,,,,,,

@@ -29,7 +29,7 @@ workflow SC_ATAC {
 	count_ch = COUNT_ATAC(sample_info_ch)
 
 	FINISH_PROJECTS(
-			count_ch.project_id.unique(),
+			count_ch.project_id.collect().flatten().unique(),
 			'scatac-10x'
 		)
 }

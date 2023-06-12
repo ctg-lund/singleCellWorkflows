@@ -29,7 +29,7 @@ workflow SCRNASEQ {
 		count_ch = COUNT(sample_info_ch)
 
 		FINISH_PROJECTS(
-			count_ch.project_id.unique(),
+			count_ch.project_id.collect().flatten().unique(),
 			'scrna-10x'
 		)
 

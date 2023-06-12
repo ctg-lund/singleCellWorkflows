@@ -31,7 +31,7 @@ workflow SCCITESEQ {
 
     lib_ch =  GENERATE_LIB_CSV(sample_info_ch)
 
-    feature_reference_ch = FILTER_FEATURE_REFERENCE(sheet_ch.feature_reference, lib_ch.sample_project)
+    feature_reference_ch = FILTER_FEATURE_REFERENCE(sheet_ch.feature_reference, lib_ch.sample_name)
 
     count_ch = COUNT(lib_ch.library, feature_reference_ch, lib_ch.sample_name, lib_ch.sample_project, lib_ch.sample_species )
 

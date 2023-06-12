@@ -23,9 +23,6 @@ workflow SCRNASEQ {
 		sample_fastqc_ch = sheet_ch.data
 			.splitCsv(header:true)
 			.map { row -> tuple( row.Sample_ID, row.Sample_Project) }
-		project_id_ch = sheet_ch.data
-			.splitCsv(header:true)
-			.map { row ->  row.Sample_Project  }
 
 		FASTQC(sample_fastqc_ch)
 		

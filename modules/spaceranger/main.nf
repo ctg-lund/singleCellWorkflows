@@ -45,7 +45,6 @@ process SPACECOUNT {
 
 
     """
-	echo "$sample_species"
     spaceranger count \
 			--id="$Sample_ID" \
 			--transcriptome=$genome \

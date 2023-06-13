@@ -15,6 +15,7 @@ This pipeline does not do any parsing of input. We use our [samplesheet generato
 [![10X scCiteSeq](https://img.shields.io/badge/10X-scCiteSeq-brightgreen)](/subworkflows/scciteseq.nf) 
 [![10X VDJ](https://img.shields.io/badge/10X-VDJ-brightgreen)](/subworkflows/scmulti.nf) [![10X Flex](https://img.shields.io/badge/10X-Flex-brightgreen)](/subworkflows/flexscrnaseq.nf)
 [![10X ARC](https://img.shields.io/badge/10X-ARC-brightgreen)](/subworkflows/scarc.nf)[![10X ATAC](https://img.shields.io/badge/10X-ATAC-brightgreen)](/subworkflows/scatac.nf)
+[![10X Visium](https://img.shields.io/badge/10X-Visium-brightgreen)](/subworkflows/visium.nf)
 
 ## Quick start
 In production:
@@ -40,3 +41,4 @@ nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \
 * [10X VDJ pipeline](/docs/scmulti-10x.md)
 * [10X ATAC pipeline](/docs/scatac-10x.md)
 * [10X Multiome pipeline](/docs/scarc-10x.md)
+* [10X Visium pipeline](/docs/scvisium-10x.md)

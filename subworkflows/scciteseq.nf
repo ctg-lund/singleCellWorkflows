@@ -42,7 +42,7 @@ workflow SCCITESEQ {
         )
 
     FINISH_PROJECTS (
-			mqc_conf_ch.project_id.collect().flatten().unique(),
+			mqc_conf_ch.project_id.flatten().unique(),
 			'scciteseq-10x'
 		)
 }

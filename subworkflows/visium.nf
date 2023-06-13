@@ -16,7 +16,7 @@ workflow VISIUM {
 	// all samplesheet info
 	sample_info_ch = sheet_ch.data
 		.splitCsv(header:true)
-		.map { row -> tuple( row.Sample_ID, row.Sample_Project, row.species, row.cytaimage, row.darkimage, row.image, row.slide, row.slide_area) }
+		.map { row -> tuple( row.Sample_ID, row.Sample_Project, row.Sample_Species, row.cytaimage, row.darkimage, row.image, row.slide, row.slide_area) }
 	
 	sample_fastqc_ch = sheet_ch.data
 			.splitCsv(header:true)

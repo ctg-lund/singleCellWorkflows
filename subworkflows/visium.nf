@@ -4,16 +4,10 @@ outdir = params.outdir
 samplesheet = file(params.samplesheet)
 
 // Import modules
-include { SPACECOUNT } from "../modules/spaceranger/main"
-include { DELIVERY_INFO } from "../modules/delivery_info/main"
-include { FASTQC } from "../modules/fastqc/main"
-include { MULTIQC } from "../modules/multiqc/main"
-include { SUMMARIZE_COUNT } from "../modules/summarize_count/main"
-include { MD5SUM } from "../modules/md5sum/main"
-include { PIPE_DONE } from "../modules/pipeline_done/main"
-include { DELIVER_PROJ } from "../modules/deliver/main"
-include { CREATE_MULTI_CONFIG } from "../modules/create_multi_config/main"
 include { SPLITSHEET } from "../modules/split_sheet/main"
+include { FASTQC } from "../modules/fastqc/main"
+include { SPACECOUNT } from "../modules/spaceranger/main"
+include { FINISH_PROJECTS } from "../subworkflows/finish.nf"
 
 workflow VISIUM {
     // Parse samplesheet
@@ -22,11 +16,18 @@ workflow VISIUM {
 	// all samplesheet info
 	sample_info_ch = sheet_ch.data
 		.splitCsv(header:true)
-		.map { row -> tuple( row.Sample_ID, row.Sample_Project, row.index, row.species, row.cytaimage, row.darkimage, row.image, row.slide, row.area) }
+		.map { row -> tuple( row.Sample_ID, row.Sample_Project, row.Sample_Species, row.cytaimage, row.darkimage, row.image, row.slide, row.slide_area) }
+	
+	sample_fastqc_ch = sheet_ch.data
+			.splitCsv(header:true)
+			.map { row -> tuple( row.Sample_ID, row.Sample_Project) }
+		
+	FASTQC(sample_fastqc_ch)
 
-	project_id_ch = sheet_ch.data
-		.splitCsv(header:true)
-		.map { row ->  row.Sample_Project  }
+    count_ch = SPACECOUNT(sample_info_ch)
 
-    count_ch = SPACECOUNT(sample_info_ch, params.refdir)
+	FINISH_PROJECTS(
+			count_ch.project_id.collect().flatten().unique(),
+			'scvisium-10x'
+		)
 }

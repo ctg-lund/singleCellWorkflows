@@ -9,31 +9,34 @@ sample-4,SI-TT-A4,SI-TT-A4,project3,,,,,
 sample-5,SI-TT-A5,SI-TT-A5,project3,,,,,
 sample-6,SI-TT-A6,SI-TT-A6,project3,,,,,
 [10X_Data],,,,,,,,
-Sample_ID,Sample_Species,Sample_Project,force,agg,sample_pair,libtype,pipeline
-sample-1,human,project1,n,n,n,gex,scrna-10x
-sample-2,human,project1,n,n,n,gex,scrna-10x
-sample-3,human,project2,n,n,n,gex,scrna-10x
-sample-4,human,project3,n,n,1,gex,scciteseq-10x
-sample-5,human,project3,n,n,1,hto,scciteseq-10x
-sample-6,human,project3,n,n,1,adt,scciteseq-10x
-sample-7,human,project4,n,n,n,flex,scflex-10x
-sample-8,human,project5,n,n,n,flex,scflex-10x
-sample-9,human,project4,n,n,n,flex,scflex-10x
-sample-10,human,project6,n,n,2,gex,scarc-10x
-sample-11,human,project6,n,n,2,atac,scarc-10x
-sample-12,human,project7,n,n,3,gex,scmulti-10x
-sample-13,human,project7,n,n,3,tcr,scmulti-10x
-sample-14,human,project7,n,n,3,bcr,scmulti-10x
-sample-15,human,project8,n,n,n,atac,scatac-10x
+Sample_ID,Sample_Species,Sample_Project,force,agg,sample_pair,libtype,pipeline,cytaimage,darkimage,image,slide,slide_area
+sample-1,human,project1,n,n,n,gex,scrna-10x,n,n,n,n,n
+sample-2,human,project1,n,n,n,gex,scrna-10x,n,n,n,n,n
+sample-3,human,project2,n,n,n,gex,scrna-10x,n,n,n,n,n
+sample-4,human,project3,n,n,1,gex,scciteseq-10x,n,n,n,n,n
+sample-5,human,project3,n,n,1,hto,scciteseq-10x,n,n,n,n,n
+sample-6,human,project3,n,n,1,adt,scciteseq-10x,n,n,n,n,n
+sample-7,human,project4,n,n,n,flex,scflex-10x,n,n,n,n,n
+sample-8,human,project5,n,n,n,flex,scflex-10x,n,n,n,n,n
+sample-9,human,project4,n,n,n,flex,scflex-10x,n,n,n,n,n
+sample-10,human,project6,n,n,2,gex,scarc-10x,n,n,n,n,n
+sample-11,human,project6,n,n,2,atac,scarc-10x,n,n,n,n,n
+sample-12,human,project7,n,n,3,gex,scmulti-10x,n,n,n,n,n
+sample-13,human,project7,n,n,3,tcr,scmulti-10x,n,n,n,n,n
+sample-14,human,project7,n,n,3,bcr,scmulti-10x,n,n,n,n,n
+sample-15,human,project8,n,n,n,atac,scatac-10x,n,n,n,n,n
+sample-16,human,project9,n,n,4,atac,scarc-10x,n,n,n,n,n
+sample-17,human,project9,n,n,4,gex,scarc-10x,n,n,n,n,n
+sample-18,human,project10,n,n,n,gex,scvisium-10x,cytaimage,darkimage,image,slide,slide_area
 [10X_Flex_Settings],,,,,,,,
 sample_id,probe_barcode,Sample_Source,,,,,,
 sample1,BC001|BC002,sample_7,,,,,,
 sample1,BC003|BC004,sample-8,,,,,,
 [10X_FeatureReference],,,,,,,,
-id,name,read,pattern,sequence,feature_type,Sample_Project,,
-ADT_C0014,HuMs.CD11b,R2,5PNNNNNNNNNN(BC),TGAAGGCTCATTTGT,Antibody Capture,project3,,
-ADT_C0073,HuMs.CD44,R2,5PNNNNNNNNNN(BC),TGGCTTCAGGTCCTA,Antibody Capture,project3,,
-ADT_C0103,HuMs.CD45R_B220,R2,5P(BC),CCTACACCTCATAAT,Antibody Capture,project3,,
-ADT_C0104,HuMs.CD45R_B220,R2,5P(BC),CCTACATTTCATAAT,Antibody Capture,project6,,
+id,name,read,pattern,sequence,feature_type,Sample_Source,,
+ADT_C0014,HuMs.CD11b,R2,5PNNNNNNNNNN(BC),TGAAGGCTCATTTGT,ADT,sample-4|sample-7,,
+ADT_C0073,HuMs.CD44,R2,5PNNNNNNNNNN(BC),TGGCTTCAGGTCCTA,ADT,sample-4|sample-7,,
+ADT_C0103,HuMs.CD45R_B220,R2,5P(BC),CCTACACCTCATAAT,ADT,sample-4|sample-7,,
+ADT_C0104,HuMs.CD45R_B220,R2,5P(BC),CCTACATTTCATAAT,ADT,sample-4|sample-7,,
 [Yggdrasil_Data],,,,,,,,
 pipelines,,,,,,,,

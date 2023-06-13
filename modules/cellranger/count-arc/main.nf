@@ -10,6 +10,7 @@ process COUNT_ARC {
 	output:
         path "${Sample_ID}/outs/*" 
 		val ('x'), emit: done
+		val Sample_ID, emit: sample_id
 		val Sample_Project, emit: project_id
 
 	script:

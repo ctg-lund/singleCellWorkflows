@@ -92,3 +92,5 @@ output
 
 ## 10X References
 We use the prebuilt references from 10X genomics which can be found [here](https://support.10xgenomics.com/single-cell-vdj/software/downloads/latest). To make custom references, we use our [add2ref script](/bin/ctg-cellranger-add2ref.sh), which is hardcoded to work on our systems.
+
+A very simple download script can be found in [/bin/download-references.sh](/bin/download-references.sh), which will download all the references used in the workflows. You will still need to untar the references though.

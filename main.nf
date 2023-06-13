@@ -11,7 +11,7 @@ include { SCCITESEQ } from "./subworkflows/scciteseq.nf"
 include { SC_ATAC } from "./subworkflows/scatac.nf"
 include { SC_ARC } from "./subworkflows/scarc.nf"
 include { SCMULTI } from "./subworkflows/scmulti.nf"
-
+include { VISIUM } from "./subworkflows/visium.nf"
 
 workflow {
 	samplesheet_ch = GET_ANALYSISES(params.samplesheet)
@@ -38,6 +38,9 @@ workflow {
 	}
 	if (pipeline_ch.contains('scmulti-10x')) {
 		SCMULTI()
+	}
+	if (pipeline_ch.contains('scvisium-10x')) {
+		VISIUM()
 	}
 }
 

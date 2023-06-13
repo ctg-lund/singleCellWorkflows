@@ -23,16 +23,13 @@ workflow SCRNASEQ {
 		sample_fastqc_ch = sheet_ch.data
 			.splitCsv(header:true)
 			.map { row -> tuple( row.Sample_ID, row.Sample_Project) }
-		project_id_ch = sheet_ch.data
-			.splitCsv(header:true)
-			.map { row ->  row.Sample_Project  }
 
 		FASTQC(sample_fastqc_ch)
 		
 		count_ch = COUNT(sample_info_ch)
 
 		FINISH_PROJECTS(
-			count_ch.project_id.unique(),
+			count_ch.project_id.collect().flatten().unique(),
 			'scrna-10x'
 		)
 

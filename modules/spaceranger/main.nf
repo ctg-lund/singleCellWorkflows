@@ -48,7 +48,7 @@ process SPACECOUNT {
     spaceranger count \
 			--id="$Sample_ID" \
 			--transcriptome=$genome \
-			--fastqs=$outdir/$Sample_Project/fastq \
+			--fastqs=$params.outdir/$Sample_Project/fastq \
 			--sample=$Sample_ID \
 			--slide=$slide \
 			--slidefile=$params.slide_references/${slide}.gpr \

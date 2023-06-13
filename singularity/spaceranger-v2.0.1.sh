@@ -1,0 +1,1 @@
+singularity pull docker://nfcore/spaceranger:2.0.1

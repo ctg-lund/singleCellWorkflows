@@ -33,7 +33,7 @@ nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \
     -profile local_dev -stub-run \
 ```
 ## Overview of processes
-<img src="images/flowchart.pdf" alt="drawing" />
+![Flowchart](images/flowchart.pdf)
 
 ## More info
 * [Project Setup](/docs/Setup.md)

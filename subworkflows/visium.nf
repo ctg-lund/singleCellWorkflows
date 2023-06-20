@@ -4,9 +4,14 @@ outdir = params.outdir
 samplesheet = file(params.samplesheet)
 
 // Import modules
+// Samplesheet modules
 include { SPLITSHEET } from "../modules/split_sheet/main"
+// QC Modules
 include { FASTQC } from "../modules/fastqc/main"
+include { CELLRANGER_COUNT_TO_MULTIQC } from "../modules/cellranger2multiqc/count/main"
+// Processing Modules
 include { SPACECOUNT } from "../modules/spaceranger/main"
+// Finishing Modules
 include { FINISH_PROJECTS } from "../subworkflows/finish.nf"
 
 workflow VISIUM {
@@ -26,8 +31,14 @@ workflow VISIUM {
 
     count_ch = SPACECOUNT(sample_info_ch)
 
+	mqc_conf_ch = CELLRANGER_COUNT_TO_MULTIQC(
+        count_ch.sample_id.collect(), 
+        count_ch.project_id.collect(),
+        'visium'
+        )
+
 	FINISH_PROJECTS(
-			count_ch.project_id.collect().flatten().unique(),
+			mqc_conf_ch.project_id.flatten().unique(),
 			'scvisium-10x'
 		)
 }

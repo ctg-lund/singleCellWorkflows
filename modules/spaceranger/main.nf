@@ -5,6 +5,7 @@ process SPACECOUNT {
     output:
         file "${Sample_ID}/outs/*"
 		val Sample_Project, emit: project_id
+		val Sample_ID, emit: sample_id
     script:
     if ( sample_species == "Human" || sample_species == "human") {
 	   genome=params.human 

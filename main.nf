@@ -1,6 +1,13 @@
 #!/usr/bin/env nextFlow
 nextflow.enable.dsl=2
-
+def writetofile(String text) {
+    def file = new File(params.nextflow_log)
+    def lastline = file.readLines().last()
+    def newNumber = lastline.split('#')[1].toInteger() + 1
+    file.withWriterAppend { out ->
+        out.println(text+newNumber)
+    }
+}
 
 // Import modules
 include { GET_ANALYSISES } from "./modules/get_analysises/main.nf"
@@ -44,7 +51,10 @@ workflow {
 	}
 }
 
-workflow.onComplete {
-    println "Pipeline completed at: $workflow.complete"
-    println "Execution status: ${ workflow.success ? 'OK' : 'failed' }"
+workflow.onComplete { 
+    if (workflow.success) {
+        writetofile("${new Date()} [Information] singleCellWorkflow completed successfully #")
+    } else {
+        writetofile("${new Date()} [Critical] singleCellWorkflow failed. Error message: ${workflow.errorMessage} #")
+    }
 }

@@ -5,8 +5,8 @@ process SPLITSHEET {
     output:
         path "10X_Data.csv", emit: data
         path "Data.csv", emit: pipe_data, optional: true
-        path "10X_Flex_Settings.csv", emit: flex, optional: true
-        path "10X_FeatureReference.csv", emit: feature_reference, optional: true
+        path "FlexConfig_Data.csv", emit: flex, optional: true
+        path "FeatureReference_Data.csv", emit: feature_reference, optional: true
     shell:
     '''
     while read line; do

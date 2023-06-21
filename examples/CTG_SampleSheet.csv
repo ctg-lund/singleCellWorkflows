@@ -28,12 +28,12 @@ sample-15,human,project8,n,n,n,atac,scatac-10x,n,n,n,n,n
 sample-16,human,project9,n,n,4,atac,scarc-10x,n,n,n,n,n
 sample-17,human,project9,n,n,4,gex,scarc-10x,n,n,n,n,n
 sample-18,human,project10,n,n,n,gex,scvisium-10x,cytaimage,darkimage,image,slide,slide_area
-[10X_Flex_Settings],,,,,,,,
+[FlexConfig_Data],,,,,,,,
 sample_id,probe_barcode,Sample_Source,,,,,,
 sample1,BC001|BC002,sample_7,,,,,,
 sample1,BC003|BC004,sample-8,,,,,,
-[10X_FeatureReference],,,,,,,,
-id,name,read,pattern,sequence,feature_type,Sample_Source,,
+[FeatureReference_Data],,,,,,,,
+id,name,read,pattern,sequence,feature_type,Sample_ID,,
 ADT_C0014,HuMs.CD11b,R2,5PNNNNNNNNNN(BC),TGAAGGCTCATTTGT,ADT,sample-4|sample-7,,
 ADT_C0073,HuMs.CD44,R2,5PNNNNNNNNNN(BC),TGGCTTCAGGTCCTA,ADT,sample-4|sample-7,,
 ADT_C0103,HuMs.CD45R_B220,R2,5P(BC),CCTACACCTCATAAT,ADT,sample-4|sample-7,,

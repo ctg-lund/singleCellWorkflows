@@ -17,7 +17,7 @@ process MULTI {
 	cellranger multi \\
 	     --id=$sample_id \\
          --csv=$config \\
-		--localcores=22 --localmem=120 \\
+		--localcores=16 --localmem=120 \\
 	"""
 	stub:
 	"""

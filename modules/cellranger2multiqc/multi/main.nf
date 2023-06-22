@@ -28,7 +28,7 @@ process CELLRANGER_MULTI_TO_MULTIQC{
     # Convert the cellranger multi csv output to json
     for file in $params.outdir/$project_id/2_multi/*/outs/per_sample_outs/*
     do
-        python multimetric2mqc.py $file/metrics_summary.csv \$(basename \$file)
+        python multimetric2mqc.py \$file/metrics_summary.csv \$(basename \$file)
     done
     
     # Populate the multiqc config files

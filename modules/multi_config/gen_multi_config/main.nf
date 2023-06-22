@@ -57,7 +57,7 @@ process GENERATE_MULTI_CONFIG{
 echo \"\"\"${vdj}
 ${gex_header}
 [libraries]
-fastqs,sample,library_type
+fastqs,fastq_id,feature_types
 ${lines} \"\"\" > config.csv
     """
 }

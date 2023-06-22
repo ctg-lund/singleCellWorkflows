@@ -1,3 +1,4 @@
 .nextflow*
 work
 examples/output
+nextflow.log

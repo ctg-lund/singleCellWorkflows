@@ -4,7 +4,7 @@ process CELLRANGER_COUNT_TO_MULTIQC{
     val project_id
     val pipeline
     output:
-    tuple val(project_id), emit: project_id
+    val(project_id), emit: project_id
     script:
 
     number_of_samples = sample_id.size() -1

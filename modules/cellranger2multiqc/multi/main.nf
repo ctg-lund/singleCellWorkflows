@@ -4,7 +4,7 @@ process CELLRANGER_MULTI_TO_MULTIQC{
     val project_id
     output:
     val project_id, emit: project_id
-    tuple path("*_mqc.yaml")
+    path("*_mqc.yaml")
     script:
     """
     # Create the multiqc folder

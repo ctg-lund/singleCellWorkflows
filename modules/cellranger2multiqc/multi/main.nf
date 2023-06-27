@@ -36,7 +36,8 @@ process CELLRANGER_MULTI_TO_MULTIQC{
     do
         for json in *\${file_name}.json
         do
-            json_name = \"\${\$(basename \$json)%_\${file_name}.json}\"
+            json_name=\"\$(basename \"\$json\" .json)\"
+            json_name=\"\${json_name%_\${file_name}}\"
             echo \"\${json_name}: \$(cat \${json})\" >> \${file_name}_mqc.yaml
         done
     done

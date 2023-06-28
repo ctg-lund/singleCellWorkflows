@@ -53,8 +53,8 @@ workflow {
 
 workflow.onComplete { 
     if (workflow.success) {
-        writetofile("${new Date()} [Information] singleCellWorkflow completed successfully #")
+        writetofile("${new Date()} [Information] singleCellWorkflow $params.samplesheet completed successfully #")
     } else {
-        writetofile("${new Date()} [Critical] singleCellWorkflow failed. Error message: ${workflow.errorMessage} #")
+        writetofile("${new Date()} [Critical] singleCellWorkflow failed. $params.samplesheet #")
     }
 }

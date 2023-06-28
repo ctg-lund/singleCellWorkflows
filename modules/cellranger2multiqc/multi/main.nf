@@ -11,7 +11,7 @@ process CELLRANGER_MULTI_TO_MULTIQC{
     mkdir -p $params.outdir/$project_id/1_qc/multiqc
     
     # Create the multiqc config files
-    for file_name in cells library other
+    for file_name in cells library
     do 
     echo \"\"\"
     id: \"single_cell_workflows_table\"
@@ -19,10 +19,9 @@ process CELLRANGER_MULTI_TO_MULTIQC{
     description: \"This table consists of the data gathered from cellranger output \"
     plot_type: \"table\"
     pconfig: 
-    id: \"single_cell_workflows_table \$file_name \"
-    title: \"Single Cell Workflows \$file_name Stats\"
-    data:
-    \"\"\" > \${file_name}_mqc.yaml
+      id: \"single_cell_workflows_table \$file_name \"
+      title: \"Single Cell Workflows \$file_name Stats\"
+    data:\"\"\" > \${file_name}_mqc.yaml
     done
 
     # Convert the cellranger multi csv output to json
@@ -32,22 +31,15 @@ process CELLRANGER_MULTI_TO_MULTIQC{
     done
     
     # Populate the multiqc config files
-    for file_name in cells library other
+    for file_name in cells library
     do
         for json in *\${file_name}.json
         do
             json_name=\"\$(basename \"\$json\" .json)\"
             json_name=\"\${json_name%_\${file_name}}\"
-            echo \"\${json_name}: \$(cat \${json})\" >> \${file_name}_mqc.yaml
+            echo \"  \${json_name}: \$(cat \${json})\" >> \${file_name}_mqc.yaml
         done
     done
 
-    """
-
-    stub: 
-    """
-    touch cells_mqc.yaml
-    touch library_mqc.yaml
-    touch other_mqc.yaml
     """
 }

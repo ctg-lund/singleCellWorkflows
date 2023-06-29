@@ -14,12 +14,12 @@ process CELLRANGER_MULTI_TO_MULTIQC{
     for file_name in cells library
     do 
     echo \"\"\"
-    id: \"single_cell_workflows_table\"
+    id: \"single_cell_workflows_table_\${file_name}\"
     section_name : \"Single Cell Workflows \$file_name Stats\"
     description: \"This table consists of the data gathered from cellranger output \"
     plot_type: \"table\"
     pconfig: 
-      id: \"single_cell_workflows_table \$file_name \"
+      id: \"single_cell_workflows_table_\${file_name} \"
       title: \"Single Cell Workflows \$file_name Stats\"
     data:\"\"\" > \${file_name}_mqc.yaml
     done

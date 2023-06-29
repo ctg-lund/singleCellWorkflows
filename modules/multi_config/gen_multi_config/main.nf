@@ -17,7 +17,7 @@ process GENERATE_MULTI_CONFIG{
         gex_ref=params.human
     } else if (sample_species == 'mouse') {
         vdj_ref=params.mouse_vdj
-        gex_ref=params.human
+        gex_ref=params.mouse
     }
     if (libtype.contains('bcr') || libtype.contains('tcr')){
         vdj+='[vdj]\n'

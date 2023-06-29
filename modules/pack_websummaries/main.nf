@@ -26,7 +26,9 @@ process PACK_WEBSUMMARIES{
         # append the file path and the sample name to the array
         file_paths+=("$file")
         dir=$(dirname "$file")
-        dir=$(dirname "$dir")
+        if ! [ $(dirname "$dir") == "per_sample_output" ]; then
+            dir=$(dirname "$dir")
+        fi
         result=$(basename "$dir")
         sample_names+=("$result")
         echo $file $result

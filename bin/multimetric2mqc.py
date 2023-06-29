@@ -41,5 +41,3 @@ with open('{}_cells.json'.format(sample_name), 'w') as f:
     json.dump(cells, f)
 with open('{}_library.json'.format(sample_name), 'w') as f:
     json.dump(library, f)
-with open('{}_other.json'.format(sample_name), 'w') as f:
-    json.dump(other, f)

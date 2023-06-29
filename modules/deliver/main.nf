@@ -9,8 +9,7 @@ process DELIVER_PROJ {
 
 	script:
 	"""
-	cd $params.outdir/$project_id
-	bash deliver.sh
+	bash /projects/fs1/shared/Development_Github/Yggdrasil/bin/delivery.sh $params.outdir/$project_id $project_id jacob.karlstrom@med.lu.se
 	"""
 	stub:
 	"""

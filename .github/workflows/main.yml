@@ -9,4 +9,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: nf-core/setup-nextflow@v1
-      - run: echo "#0" > nextflow.log && nextflow run ${GITHUB_WORKSPACE} -stub --samplesheet ${GITHUB_WORKSPACE}/examples/CTG_SampleSheet.csv --outdir ${GITHUB_WORKSPACE}
+      - run: echo "#0" > nextflow.log && nextflow run ${GITHUB_WORKSPACE} -stub --samplesheet ${GITHUB_WORKSPACE}/examples/CTG_SampleSheet.csv --outdir ${GITHUB_WORKSPACE} -profile local_dev

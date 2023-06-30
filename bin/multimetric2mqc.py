@@ -30,9 +30,9 @@ with open(input_file, 'r') as f:
 
         # Add metric_name and metric_value to appropriate dictionary based on category
         if category == 'Cells':
-            cells[metric_name] = metric_value
+            cells[library_type+'_'+metric_name] = metric_value
         elif category == 'Library':
-            library[metric_name] = metric_value
+            library[library_type+'_'+metric_name] = metric_value
         else:
             other[metric_name] = metric_value
 

@@ -24,6 +24,7 @@ process CELLRANGER_COUNT_TO_MULTIQC{
 
     for i in {0..5}; do
     if ! [ -f \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml\" ]; then
+      mkdir -p \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/\"
       echo \"\"\"id: \"single_cell_workflows_table\"
 section_name : \"Single Cell Workflows Stats\"
 description: \"This table consists of the data gathered from cellranger output \"

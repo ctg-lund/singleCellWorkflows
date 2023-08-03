@@ -34,7 +34,7 @@ pconfig:
 data:\"\"\" > \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml\"
     fi
     # Extends mqc_yaml file with sample information
-    echo \"  \${sample_array[\$i]}: \$(cat $params.outdir/\${project_array[\$i]}/2_count/\${sample_array[\$i]}/outs/metrics_summary.csv | python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))')\" | tr -d '[]' >> \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml\"
+    echo \"  \${sample_array[\$i]}: \$(cat $params.outdir/\${project_array[\$i]}/2_count/\${sample_array[\$i]}/outs/$summary | python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))')\" | tr -d '[]' >> \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml\"
 done
     """
 }

@@ -13,13 +13,16 @@ workflow FINISH_PROJECTS {
     main:
         multiqc_ch = MULTIQC(project_id)
 
-        SYNC_MULTIQC(multiqc_ch.html_report, multiqc_ch.project_id)
+        if ( params.ctg_mode == 'true'){
+            SYNC_MULTIQC(multiqc_ch.html_report, multiqc_ch.project_id)
+        }
 
         webpack_ch = PACK_WEBSUMMARIES(multiqc_ch.project_id)
         
         publish_ch = PUBLISH_MANIFEST(webpack_ch.project_id, workflow)
-
-        md5sum_ch = MD5SUM(publish_ch)
-
-        deliver_auto_ch = DELIVER_PROJ(md5sum_ch.project_id)
+        if ( params.ctg_mode == 'true'){
+            md5sum_ch = MD5SUM(publish_ch)
+            deliver_auto_ch = DELIVER_PROJ(md5sum_ch.project_id)
+        }
+        print params.ctg_mode
 }

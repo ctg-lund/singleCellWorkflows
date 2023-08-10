@@ -26,6 +26,10 @@ If you are using custom references:
 ```
 nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --custom_genome </path/to/custome_genome>
 ```
+If you are not from ctg and don't want to run it with our ctg specific modules add `--ctg_mode false` like in:
+```
+nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --custom_genome </path/to/custome_genome> --ctg_mode false
+```
 Testing:
 ```bash
 nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \

@@ -1,13 +1,5 @@
 [Header],,,,,,,,
 IEMFileVersion,4,,,,,,,
-[Data],,,,,,,,
-Sample_ID,index,index2,Sample_Project,,,,,
-sample-1,SI-TT-A1,SI-TT-A1,project1,,,,,
-sample-2,SI-TT-A2,SI-TT-A2,project1,,,,,
-sample-3,SI-TT-A3,SI-TT-A3,project2,,,,,
-sample-4,SI-TT-A4,SI-TT-A4,project3,,,,,
-sample-5,SI-TT-A5,SI-TT-A5,project3,,,,,
-sample-6,SI-TT-A6,SI-TT-A6,project3,,,,,
 [10X_Data],,,,,,,,
 Sample_ID,Sample_Species,Sample_Project,force,agg,sample_pair,libtype,pipeline,cytaimage,darkimage,image,slide,slide_area
 sample-1,human,project1,n,n,n,gex,scrna-10x,n,n,n,n,n
@@ -31,6 +23,8 @@ sample-18,human,project10,n,n,n,gex,scvisium-10x,cytaimage,darkimage,image,slide
 sample-19,human,project7,n,n,5,gex,scmulti-10x,n,n,n,n,n
 sample-20,human,project7,n,n,5,tcr,scmulti-10x,n,n,n,n,n
 sample-21,human,project7,n,n,5,bcr,scmulti-10x,n,n,n,n,n
+sample-22,human,project9,n,n,6,atac,scarc-10x,n,n,n,n,n
+sample-23,human,project9,n,n,6,gex,scarc-10x,n,n,n,n,n
 [FlexConfig_Data],,,,,,,,
 sample_id,probe_barcode,Sample_Source,,,,,,
 sample1,BC001|BC002,sample_7,,,,,,

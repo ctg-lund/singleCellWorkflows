@@ -15,4 +15,4 @@ with open(input_file, 'r') as file:
     data = {k.strip():v.strip() for (k,v) in zip(keys,values)}
 # Appends to an already existing mqc.yaml file
 with open(mqc_yaml, 'a') as file:
-    file.write(f'  {sample_name}: {data}')
+    file.write(f'  {sample_name}: {data}\n')

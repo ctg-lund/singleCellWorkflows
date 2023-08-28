@@ -49,8 +49,7 @@ Cells,VDJ T,,,Cells with productive V-J spanning pair,76.61%
 Library,Gene Expression,Fastq ID,1a_522_3wbm,Number of reads,"172,468,563"
 Library,Gene Expression,Fastq ID,1a_522_3wbm,Number of short reads skipped,0
 Library,Gene Expression,Fastq ID,1a_522_3wbm,Q30 RNA read,91.1%
-Library,Gene Expression,Fastq ID,1a_522_3wbm,Q30 UMI,94.8%
-\'\'\' > \$sample_dir_1/metrics_summary.csv
+Library,Gene Expression,Fastq ID,1a_522_3wbm,Q30 UMI,94.8%\'\'\' > \$sample_dir_1/metrics_summary.csv
 
 echo \'\'\'Category,Library Type,Grouped By,Group Name,Metric Name,Metric Value
 Cells,Gene Expression,,,Cells,"5,727"
@@ -72,8 +71,7 @@ Cells,VDJ T,,,Cells with productive V-J spanning pair,76.61%
 Library,Gene Expression,Fastq ID,1a_522_3wbm,Number of reads,"172,468,563"
 Library,Gene Expression,Fastq ID,1a_522_3wbm,Number of short reads skipped,0
 Library,Gene Expression,Fastq ID,1a_522_3wbm,Q30 RNA read,91.1%
-Library,Gene Expression,Fastq ID,1a_522_3wbm,Q30 UMI,94.8%
-\'\'\' > \$sample_dir_2/metrics_summary.csv
+Library,Gene Expression,Fastq ID,1a_522_3wbm,Q30 UMI,94.8%\'\'\' > \$sample_dir_2/metrics_summary.csv
 
 	"""
 }

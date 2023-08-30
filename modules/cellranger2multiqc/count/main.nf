@@ -22,10 +22,11 @@ process CELLRANGER_COUNT_TO_MULTIQC{
     IFS=', ' read -ra project_array <<< \"\$project_string\"
     # Checks if mqc_yaml exists, if not create it
     for i in {0..$number_of_samples}; do
+    echo \$i
     if ! [ -f \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml\" ]; then
       mkdir -p \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/\"
       echo \"\"\"id: \"single_cell_workflows_table\"
-section_name : \"Single Cell Workflows Stats\"
+section_name : \"Single Cell Workflows Count Stats\"
 description: \"This table consists of the data gathered from cellranger output \"
 plot_type: \"table\"
 pconfig:
@@ -34,7 +35,7 @@ pconfig:
 data:\"\"\" > \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml\"
     fi
     # Extends mqc_yaml file with sample information
-    echo \"  \${sample_array[\$i]}: \$(cat $params.outdir/\${project_array[\$i]}/2_count/\${sample_array[\$i]}/outs/$summary | python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))')\" | tr -d '[]' >> \"$params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml\"
+    python $projectDir/bin/countmetric2mqc.py $params.outdir/\${project_array[\$i]}/2_count/\${sample_array[\$i]}/outs/$summary \${sample_array[\$i]} $params.outdir/\${project_array[\$i]}/1_qc/multiqc/multiqc_mqc.yaml
 done
     """
 }

@@ -24,5 +24,4 @@ workflow FINISH_PROJECTS {
             md5sum_ch = MD5SUM(publish_ch)
             deliver_auto_ch = DELIVER_PROJ(md5sum_ch.project_id)
         }
-        print params.ctg_mode
 }

@@ -1,5 +1,3 @@
-[Header],,,,,,,,
-IEMFileVersion,4,,,,,,,
 [10X_Data],,,,,,,,
 Sample_ID,Sample_Species,Sample_Project,force,agg,sample_pair,libtype,pipeline,cytaimage,darkimage,image,slide,slide_area
 sample-1,human,project1,n,n,n,gex,scrna-10x,n,n,n,n,n

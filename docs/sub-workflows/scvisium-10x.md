@@ -18,12 +18,5 @@ In the metadata folder you will put all the images that will be used by spaceran
 
 You will also need to download the slidefiles which can be found [here](https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/using/slidefile-download)
 
-# How to Run
-
-To execute the workflow, use the following command:
-
-```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> 
-```
-
-Replace `</path/to/your/samplesheet.csv>` with the actual path to your SampleSheet.csv file.
+# Workflow specific processing steps
+* `spaceranger count` on fastq files as described here: https://support.10xgenomics.com/spatial-gene-expression/software/pipelines/latest/using/count#count

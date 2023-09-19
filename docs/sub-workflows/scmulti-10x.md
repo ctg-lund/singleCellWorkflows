@@ -19,3 +19,7 @@ Other than standard parameters, following parameters needs to be defined:
 * human_vdj : Path to the human vdj reference
 * mouse_vdj : Path to the mouse vdj reference
 * COUNT_ARC : The path to the container which cellranger-arc is called from
+
+# Workflow specific processing steps
+* Generation of config.csv files a described here: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/multi#examples
+* Running of cellranger as described here: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/multi#cellranger-multi

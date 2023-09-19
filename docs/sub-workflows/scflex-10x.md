@@ -28,18 +28,9 @@ Explanation of each column:
 Described [here](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/multi-frp#samples) by 10X official documentation.
 Special case is `Sample_Source` which need to match a sample from the 10X_Data section. If no match is found, pipeline assumes it's a singleplex sample.
 
-# How to Run
-
-To execute the workflow, use the following command:
-
-```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv>
-```
-Or if using custom probes:
-```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> --custom_genome </path/to/custom_genome> --custom_probes </path/to/custom_probes>
-```
-Replace `</path/to/your/samplesheet.csv>` with the actual path to your SampleSheet.csv file. The `--analysis` option should be set to `scflex-10x` to indicate the pipeline to use for analysis.
-
 ## Note if using custom probes
 You will need to construct both a reference genome and a reference probe set. Until I have set up a guide for that, contact 10X for more information.
+
+# Workflow specific processing steps
+* Generation of config.csv files a described here: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/multi#examples
+* Running of cellranger as described here: https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/multi#cellranger-multi

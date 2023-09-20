@@ -20,12 +20,6 @@ Explanation of each column:
 * **agg**: If you want to aggregate all the processed samples for visualization, set this column accordingly.
 * **pipeline**: This column specifies the pipeline that should be used for the sample. In this case, the value should be set to `scrna-10x`.
 
-# How to Run
-
-To execute the workflow, use the following command:
-
-```
-nextflow run main.nf --samplesheet </path/to/your/samplesheet.csv> 
-```
-
-Replace `</path/to/your/samplesheet.csv>` with the actual path to your SampleSheet.csv file. The `--analysis` option should be set to `scrna-10x` to indicate the pipeline to use for analysis.
+# Workflow specific processing steps
+* Generation of config.csv as described here: https://support.10xgenomics.com/single-cell-vdj/software/pipelines/latest/using/multi#examples
+* Running of cellranger multi on config files as described here https://support.10xgenomics.com/single-cell-vdj/software/pipelines/latest/using/multi#running-multi

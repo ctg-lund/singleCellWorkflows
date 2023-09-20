@@ -1,5 +1,5 @@
 # Introduction
-This is where I will document how to run spaceranger. It will start very manually and hopefully in the end mature into an automated pipeline. I will make no promises, but I plan to continously revise this guide as the workflow progress.
+This is a document describing how to run spaceranger. The document will be continuously updated while the pipeline matures.
 
 # Spaceranger Count
 **Required input files**

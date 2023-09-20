@@ -4,7 +4,6 @@ include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 include { PUBLISH_MANIFEST } from '../modules/publish_manifest/main'
 include { MULTIQC } from "../modules/multiqc/main"
 include { MD5SUM } from "../modules/md5sum/main"
-include { PACK_WEBSUMMARIES } from "../modules/pack_websummaries/main"
 
 workflow FINISH_PROJECTS {
     take:

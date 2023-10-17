@@ -41,7 +41,7 @@ process COUNT {
 	     --sample $sample_id \\
 	     --transcriptome $genome \\
 		--localcores=19 --localmem 120 \\
-		 $forcecells $intron_argument
+		 $forcecells $intron_argument $params.cellranger_arguments
 
 	"""
 	stub:

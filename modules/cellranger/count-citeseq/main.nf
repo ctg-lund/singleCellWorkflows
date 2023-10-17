@@ -36,7 +36,7 @@ process COUNT {
          --feature-ref=$feature_reference \\
          --libraries=$library \\
 		 --localcores=19 --localmem=120 \\
-		 $params.cellranger_arguments
+		 --check-library-compatibility=false
 
 	"""
 	stub:

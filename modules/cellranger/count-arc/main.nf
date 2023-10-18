@@ -14,7 +14,6 @@ process COUNT_ARC {
 		val Sample_Project, emit: project_id
 
 	script:
-	def args = task.ext.args ?: ''
 	// Get sample_specieserence
 	if ( sample_species == "Human" || sample_species == "human") {
 	   genome=params.human_atac }

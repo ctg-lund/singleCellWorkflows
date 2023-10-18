@@ -13,7 +13,6 @@ process MULTI {
 		val project_id, emit: project_id
 		
 	script:
-	def args = task.ext.args ?: ''
 	"""
 	cellranger multi \\
 	     --id=$sample_id \\

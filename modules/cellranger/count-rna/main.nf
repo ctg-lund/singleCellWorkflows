@@ -11,7 +11,6 @@ process COUNT {
 		val project_id, emit: project_id
 
 	script:
-	def args = task.ext.args ?: ''
 	// Set force-cells if force not "n"
 	forcecells=""
 	if ( force != "n" && force != "null") {

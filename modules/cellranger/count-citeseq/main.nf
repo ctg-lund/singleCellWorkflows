@@ -16,6 +16,7 @@ process COUNT {
 		val Sample_ID, emit: sample_id
 
 	script:
+	def args = task.ext.args ?: ''
 	// Get sample_specieserence
 	if ( sample_species == "Human" || sample_species == "human") {
 	   genome=params.human }
@@ -36,7 +37,7 @@ process COUNT {
          --feature-ref=$feature_reference \\
          --libraries=$library \\
 		 --localcores=19 --localmem=120 \\
-		 --check-library-compatibility=false
+		 $args
 
 	"""
 	stub:

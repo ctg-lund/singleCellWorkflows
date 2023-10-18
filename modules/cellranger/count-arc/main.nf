@@ -31,7 +31,6 @@ process COUNT_ARC {
 	     --reference=$genome \\
          --libraries=$library \\
 		 --localcores=19 --localmem=120 \\
-		 $params.cellranger_arguments
 
 	"""
 	stub:

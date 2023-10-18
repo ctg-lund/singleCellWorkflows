@@ -48,3 +48,4 @@ nextflow run main.nf --samplesheet examples/CTG_SampleSheet.csv  \
 * [10X ATAC pipeline](/docs/scatac-10x.md)
 * [10X Multiome pipeline](/docs/scarc-10x.md)
 * [10X Visium pipeline](/docs/scvisium-10x.md)
+* [Contribution guide](docs/CONTRIBUTION.md)

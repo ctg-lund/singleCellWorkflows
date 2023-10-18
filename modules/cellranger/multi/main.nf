@@ -13,12 +13,13 @@ process MULTI {
 		val project_id, emit: project_id
 		
 	script:
+	def args = task.ext.args ?: ''
 	"""
 	cellranger multi \\
 	     --id=$sample_id \\
          --csv=$config \\
 		--localcores=16 --localmem=120 \\
-		$params.cellranger_arguments
+
 	"""
 	stub:
 	"""

@@ -12,6 +12,7 @@ process COUNT_ATAC {
 		val project_id, emit: project_id
 
 	script:
+	def args = task.ext.args ?: ''
 	def filter = config.name != 'NO_FILE' ? "--filter $opt" : ''
 	// Set force-cells if force not "n"
 	forcecells=""
@@ -43,7 +44,7 @@ process COUNT_ATAC {
 	     --sample=$sample_id \\
 	     --reference=$genome \\
 		--localcores=19 --localmem=120 \\
-		 $forcecells $intron_argument $params.cellranger_arguments
+		 $forcecells $intron_argument
 
 	"""
 	stub:

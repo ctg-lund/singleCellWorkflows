@@ -11,6 +11,7 @@ process COUNT {
 		val project_id, emit: project_id
 
 	script:
+	def args = task.ext.args ?: ''
 	// Set force-cells if force not "n"
 	forcecells=""
 	if ( force != "n" && force != "null") {
@@ -41,7 +42,7 @@ process COUNT {
 	     --sample $sample_id \\
 	     --transcriptome $genome \\
 		--localcores=19 --localmem 120 \\
-		 $forcecells $intron_argument $params.cellranger_arguments
+		 $forcecells $intron_argument
 
 	"""
 	stub:

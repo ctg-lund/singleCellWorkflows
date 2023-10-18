@@ -18,6 +18,7 @@ process MULTI {
 	     --id=$sample_id \\
          --csv=$config \\
 		--localcores=16 --localmem=120 \\
+		$params.cellranger_arguments
 	"""
 	stub:
 	"""

@@ -36,6 +36,7 @@ process COUNT {
          --feature-ref=$feature_reference \\
          --libraries=$library \\
 		 --localcores=19 --localmem=120 \\
+		 --check-library-compatibility=false
 
 	"""
 	stub:

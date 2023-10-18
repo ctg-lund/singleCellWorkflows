@@ -12,7 +12,7 @@
       height: 100%;
       }
       body, div, p { 
-      padding: 0;
+      padding: 2px;
       margin: 0;
       outline: none;
       font-family: Roboto, Arial, sans-serif;
@@ -77,20 +77,97 @@
       .google{
       background: #d34836;
       }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: auto;
+      }
+
+      table {
+        width: 100%;
+        border-spacing: 0;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      table, th, td {
+        border: 1px solid black;
+        padding: 15px;
+        text-align: left;
+      }
+
+      table th {
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
     </style>
   </head>
   <body>
     <div class="main-block">
       <div class="block-item">
         <h1><b>Nextflow manifest</b></h1>
-        <p> <b>Pipeline release:</b> 1.5.0</p>
+        <br>
+        <p> <b>Pipeline release:</b> 1.6.0</p>
         <p> <b>Subworkflow:</b> xxSubWorkflowxx</p>
         <p> <b> Maintainer:</b> jacob.karlstrom@med.lu.se</p>
         <p> <b>Description:</b> Your data has been processed by the nextflow pipeline singleCellWorkflows. If you want more information on how your data was processed, follow the link below and navigate to your release!</p>
+        <br>
+        <h1>
+          <b>
+            Software versions in this release
+          </b>
+        </h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Software</th>
+              <th>Version</th>
+              <th>Release Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>cellranger</td>
+              <td>7.1.0</td>
+              <td>December 7, 2022</td>
+            </tr>
+            <tr>
+              <td>cellranger-arc</td>
+              <td>2.0.2</td>
+              <td>Augusti 18, 2022</td>
+            </tr>
+            <tr>
+              <td>cellranger-atac</td>
+              <td>2.1.0</td>
+              <td>April 4, 2022</td>
+            </tr>
+            <tr>
+              <td>FastQC</td>
+              <td>0.11.9</td>
+              <td>January 8, 2020</td>
+            </tr>
+            <tr>
+              <td>MultiQC</td>
+              <td>1.16</td>
+              <td>September 22, 2023</td>
+            </tr>
+            <tr>
+              <td>spaceranger</td>
+              <td>2.0.1</td>
+              <td>January 18, 2023</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
         <a href="https://github.com/ctg-lund/singleCellWorkflows/tree/master">
             <button class="btn github" data-provider="github"><i class="fab fa-github"></i><span>GitHub</span></button>
         </a>
-        <a href="https://github.com/ctg-lund/singleCellWorkflows/archive/refs/tags/v1.4.2.tar.gz">
+        <a href="https://github.com/ctg-lund/singleCellWorkflows/archive/refs/tags/v1.6.0.tar.gz">
           <button class="btn twitter" data-provider="twitter"><i class="fab "></i><span>Download pipeline release</span></button>
       </a>
       </div>

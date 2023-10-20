@@ -12,7 +12,6 @@ process COUNT_ATAC {
 		val project_id, emit: project_id
 
 	script:
-	def filter = config.name != 'NO_FILE' ? "--filter $opt" : ''
 	// Set force-cells if force not "n"
 	forcecells=""
 	if ( force != "n" && force != "null") {

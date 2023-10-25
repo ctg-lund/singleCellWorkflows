@@ -10,6 +10,7 @@ process MD5SUM {
 	"""
 	cd $params.outdir/${project_id}
 	find . -type f -exec md5sum '{}' \\; > ctg-md5.${project_id}.txt
+	find . -type l -exec md5sum '{}' \\; >> ctg-md5.${project_id}.txt
 	""" 
 	stub:
 	"""

@@ -7,6 +7,9 @@ process DELIVER_PROJ {
 	output:
 		val project_id
 
+    when:
+        params.sync
+
 	script:
 	"""
 	bash /projects/fs1/shared/Yggdrasil/bin/delivery.sh -d $params.outdir/$project_id -p $project_id -e $params.deliver_to

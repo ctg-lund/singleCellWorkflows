@@ -43,6 +43,12 @@ process SPACECOUNT {
 	else {
 		image_argument = ""
 	}
+	if ( alignment != "n") {
+		alignment_argument = "--loupe-alignment="+params.outdir+'/'+Sample_Project+'/metadata/'+alignment
+		}
+	else {
+		alignment_argument = ""
+	}
 
 
     """
@@ -58,6 +64,7 @@ process SPACECOUNT {
 			$dark_argument \
 			$cyta_argument \
 			$probe_argument \
+			$alignment_argument \
     """
 	stub:
 	"""

@@ -1,7 +1,7 @@
 process SPACECOUNT {
 	publishDir "${params.outdir}/${Sample_Project}/2_count", mode: 'move'
     input:
-        tuple val(Sample_ID), val(Sample_Project), val(sample_species), val(cytaimage), val(darkimage), val(image), val(slide), val(area)
+        tuple val(Sample_ID), val(Sample_Project), val(sample_species), val(cytaimage), val(darkimage), val(image), val(slide), val(area), val(alignment)
     output:
         file "${Sample_ID}/outs/*"
 		val Sample_Project, emit: project_id

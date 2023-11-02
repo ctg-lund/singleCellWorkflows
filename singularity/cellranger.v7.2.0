@@ -1,0 +1,32 @@
+Bootstrap:docker
+From:nfcore/base
+
+%labels
+	MAINTAINER Jacob Karlstrom <jacob.karlstrom@med.lu.se>
+	DESCRIPTION Singularity container Cellranger-v7.2.0
+
+%environment
+	PATH=/opt/bin:/opt/conda/envs/ngs-tools/bin/:/opt/cellranger-7.2.0:/opt/bin:$PATH
+
+%post
+	rm -rf /var/lib/apt/lists/*
+	apt -y clean
+	apt -y update
+	apt -y install libz-dev build-essential gettext cmake libxml2-dev libcurl4-openssl-dev libssl-dev make libbz2-dev libboost-dev python3-pip sudo unzip
+
+	mkdir -p /usr/share/man/man1
+
+	sudo apt -y install default-jre
+
+	mkdir -p /opt/bin
+
+
+	# WGET CELLRANGER v7.2.0
+	cd /opt
+	wget -O cellranger-7.2.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-7.2.0.tar.gz?Expires=1698959834&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&Signature=UQ~e06XfEh2bSVcFuF75dd7~0cpC7SyULZA6qtYvYpgtKbMUnymxyvFmd-nzP3ZRInM3eBJLbR1m3Sg~rbTJhyv-ywyvfANTUKomvW0Mwzy3Udd~CXbu-2NOE~mVN9~IExXNlViFbiUF4~qkAzUZOAlVWwt8Fq45L46bjskcVm7dwILKZL32gGUjVU~qu7sKbpCmZJDWUVT6tbiqdVt2K9QfQqENvfsbbAAMAqVLx3jZ20AKo2it7FdmJcYB6Q3uwM7ChbhZq~HCVKqSKzF-V4VRmxC1Thc-Vjv5HzWEvsmq9~-SDB-4KN-nH7E-GBmrWWDFNu7KsoL5pMbWxvyaSA__"
+
+	# TAR CELLRANGER v7.2.0
+	tar -zxvf cellranger-7.2.0.tar.gz
+
+
+	cd -

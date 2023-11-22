@@ -23,3 +23,32 @@ Explanation of each column:
 # Workflow specific processing steps
 * Generation of config.csv as described here: https://support.10xgenomics.com/single-cell-vdj/software/pipelines/latest/using/multi#examples
 * Running of cellranger multi on config files as described here https://support.10xgenomics.com/single-cell-vdj/software/pipelines/latest/using/multi#running-multi
+
+# Reading EmptyDroplet output
+
+## Scanpy
+```python
+import scanpy as sc
+from scipy.io import mmread
+
+# Read the count matrix
+adata = sc.AnnData(X=mmread('output.mtx').T)
+
+# Add cell names and gene names to the AnnData object
+# Replace 'genes.tsv' and 'cells.tsv' with the paths to your gene and cell names files
+adata.var_names = [line.strip() for line in open('genes.tsv')]
+adata.obs_names = [line.strip() for line in open('cells.tsv')]
+
+# Now you can use the 'adata' object for your analysis
+```
+
+## Seurat
+```
+library(Seurat)
+
+# Read the count matrix
+seurat_object <- Read10X(data.dir = "path_to_your_directory")
+
+# Now you can use the 'seurat_object' for your analysis
+
+```

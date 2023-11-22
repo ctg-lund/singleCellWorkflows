@@ -4,10 +4,11 @@ process EMPTY_DROPS {
 
 
 	input:
-		tuple val(sample_id), val(project_id)
+		val(sample_id) 
+        val(project_id)
 	output:
 		path "*empty_drops/*"
-        tuple val(sample_id), val(project_id); emit
+        val(project_id), emit: project_id
 	script:
 	"""
     mkdir empty_drops

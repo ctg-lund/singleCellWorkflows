@@ -5,6 +5,7 @@ samplesheet = file(params.samplesheet)
 include { SPLITSHEET } from "../modules/split_sheet/main"
 // Analysis Modules
 include { COUNT } from "../modules/cellranger/count-rna/main"
+include { EMPTY_DROPS } from "../modules/empty_drops/main"
 // QC Modules
 include { FASTQC } from "../modules/fastqc/main"
 // Delivery modules
@@ -28,8 +29,13 @@ workflow SCRNASEQ {
 		
 		count_ch = COUNT(sample_info_ch)
 
+		empty_drop_ch = EMPTY_DROPS(
+			count_ch.sample_id,
+			count_ch.project_id
+		)
+
 		FINISH_PROJECTS(
-			count_ch.project_id.collect().flatten().unique(),
+			empty_drop_ch.project_id.collect().flatten().unique(),
 			'scrna-10x'
 		)
 

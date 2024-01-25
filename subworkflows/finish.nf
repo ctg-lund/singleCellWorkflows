@@ -1,5 +1,4 @@
 // Deliverables
-include { DELIVER_PROJ } from "../modules/deliver/main"
 include { SYNC_MULTIQC } from "../modules/ctg/sync_multiqc/main"
 include { PUBLISH_MANIFEST } from '../modules/publish_manifest/main'
 include { MULTIQC } from "../modules/multiqc/main"
@@ -19,6 +18,5 @@ workflow FINISH_PROJECTS {
         publish_ch = PUBLISH_MANIFEST(multiqc_ch.project_id, workflow)
         if ( params.ctg_mode == 'true'){
             md5sum_ch = MD5SUM(publish_ch)
-            deliver_auto_ch = DELIVER_PROJ(md5sum_ch.project_id)
         }
 }

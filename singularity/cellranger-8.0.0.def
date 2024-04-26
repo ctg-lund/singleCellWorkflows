@@ -1,0 +1,31 @@
+Bootstrap:docker
+From:nfcore/base
+
+%labels
+	MAINTAINER Henning Onsbring <henning.onsbring@med.lu.se>
+	DESCRIPTION Singularity container Cellranger-v8.0.0
+
+%environment
+	PATH=/opt/bin:/opt/conda/envs/ngs-tools/bin/:/opt/cellranger-8.0.0:/opt/bin:$PATH
+
+%post
+	rm -rf /var/lib/apt/lists/*
+	apt -y clean
+	apt -y update
+	apt -y install libz-dev build-essential gettext cmake libxml2-dev libcurl4-openssl-dev libssl-dev make libbz2-dev libboost-dev python3-pip sudo unzip
+
+	mkdir -p /usr/share/man/man1
+
+	sudo apt -y install default-jre
+
+	mkdir -p /opt/bin
+
+
+	# WGET CELLRANGER v8.0.0
+	cd /opt
+	wget -O cellranger-8.0.0.tar.gz "https://cf.10xgenomics.com/releases/cell-exp/cellranger-8.0.0.tar.gz?Expires=1714171598&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&Signature=KMFJOvdQ33nZndVDsXXy3aR0NAwX6fRmf461~ggktVtbgNg8FTYutKHN8Cst8Ar-qPqklNTYHYALRG2TtUi70x0B5I~tMf~aAGhZXWAdfLCIluImsxaCSp5qnmn9QskylXaB6NTz~zaWBtGbx0Y44TdSjLcX1K-Bks~m0VtWvaKVl7aatQWf5IAyFtaBmagbSwJXRWIMcimH2fudKKmcSbUebNMaVDaLJA-Q-BzzLEolnaTLP~Gkev6TUjvJ0-j87e9tEnp2RaJWkRcBVjWBhs8RexiTvgNydIHa4BsJZDPqTrEuy-sKlh4lDSTzLqEp0vsJDD-G3wUQxSD2x1sdHA__"
+
+	# TAR CELLRANGER v8.0.0
+	tar -zxvf cellranger-8.0.0.tar.gz
+
+	cd -

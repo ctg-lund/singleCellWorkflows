@@ -20,6 +20,11 @@ process COUNT {
 	} else {
 		intron_argument=""
 	}
+	if ( params.create_bam == 'true' ) {
+		create_bam="true"
+	} else {
+		create_bam="false"
+	}
 
 	// Get sample_specieserence
 	if ( sample_species == "Human" || sample_species == "human") {
@@ -36,12 +41,13 @@ process COUNT {
 
 	"""
 	cellranger count \\
-	     --id $sample_id \\
-	     --fastqs $params.outdir/$project_id/fastq \\
-	     --sample $sample_id \\
-	     --transcriptome $genome \\
-		--localcores=19 --localmem 120 \\
-		 $forcecells $intron_argument
+	    --id $sample_id \\
+	    --fastqs $params.outdir/$project_id/fastq \\
+	    --sample $sample_id \\
+	    --transcriptome $genome \\
+	    --create-bam $create_bam \\
+        --localcores=19 --localmem 120 \\
+	    $forcecells $intron_argument
 
 	"""
 	stub:

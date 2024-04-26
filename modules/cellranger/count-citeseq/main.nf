@@ -32,12 +32,12 @@ process COUNT {
 
 	"""
 	cellranger count \\
-	     --id=$Sample_ID \\
-	     --transcriptome=$genome \\
-         --feature-ref=$feature_reference \\
-         --libraries=$library \\
-		 --localcores=19 --localmem=120 \\
-		 $args
+	    --id=$Sample_ID \\
+	    --transcriptome=$genome \\
+        --feature-ref=$feature_reference \\
+        --libraries=$library \\
+        --localcores=19 --localmem=120 \\
+	    $args
 
 	"""
 	stub:

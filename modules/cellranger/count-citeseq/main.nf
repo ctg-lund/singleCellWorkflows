@@ -29,11 +29,17 @@ process COUNT {
 	else {
 	   print ">ERROR: Species not recognized" 
 	   genome="ERR" }
+    if ( params.create_bam == 'true' ) {
+		create_bam="true"
+	} else {
+		create_bam="false"
+	}
 
 	"""
 	cellranger count \\
 	    --id=$Sample_ID \\
 	    --transcriptome=$genome \\
+	    --create-bam $create_bam \\
         --feature-ref=$feature_reference \\
         --libraries=$library \\
         --localcores=19 --localmem=120 \\

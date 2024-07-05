@@ -13,10 +13,18 @@ process MULTI {
 		val project_id, emit: project_id
 		
 	script:
+
+	if ( params.create_bam == 'true' ) {
+		create_bam="true"
+	} else {
+		create_bam="false"
+	}
+
 	"""
 	cellranger multi \\
-	     --id=$sample_id \\
-         --csv=$config \\
+	    --id=$sample_id \\
+        --csv=$config \\
+		--create-bam $create_bam \\
 		--localcores=16 --localmem=120 \\
 
 	"""

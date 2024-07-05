@@ -35,12 +35,19 @@ process COUNT_ATAC {
 	   print ">ERROR: Species not recognized" 
 	   genome="ERR" }
 
+	if ( params.create_bam == 'true' ) {
+		create_bam="true"
+	} else {
+		create_bam="false"
+	}
+
 	"""
 	cellranger-atac count \\
-	     --id=$sample_id \\
-	     --fastqs=$params.outdir/$project_id/fastq \\
-	     --sample=$sample_id \\
-	     --reference=$genome \\
+	    --id=$sample_id \\
+	    --fastqs=$params.outdir/$project_id/fastq \\
+	    --sample=$sample_id \\
+	    --reference=$genome \\
+		--create-bam $create_bam \\
 		--localcores=19 --localmem=120 \\
 		 $forcecells $intron_argument
 

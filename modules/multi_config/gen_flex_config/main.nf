@@ -29,6 +29,7 @@ process GEN_FLEX_CONFIG {
     echo \"\"\"[gene-expression]
     reference,$transcriptome
     probe-set,$probeset
+    create-bam,false
     [libraries]
     fastq_id,fastqs,feature_types
     $Sample_ID,$params.outdir/$Sample_Project/fastq,Gene Expression

@@ -27,6 +27,7 @@ process GENERATE_MULTI_CONFIG{
         sample_name = Sample_ID[libtype.indexOf('gex')]
         gex_header+='[gene-expression]\n'
         gex_header+='reference,'+gex_ref+'\n'
+        gex_header+='create-bam,false\n'
     } else if (libtype.contains('adt')) {
         sample_name = Sample_ID[libtype.indexOf('adt')]
     } else if (libtype.contains('hto')) {

@@ -65,6 +65,7 @@ process SPACECOUNT {
 			$cyta_argument \
 			$probe_argument \
 			$alignment_argument \
+			--create-bam=false \
     """
 	stub:
 	"""

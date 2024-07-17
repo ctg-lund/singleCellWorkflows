@@ -1,0 +1,28 @@
+Bootstrap:docker
+From:nfcore/base
+
+%labels
+	MAINTAINER Sima Rahimi <sima.rahimi@med.lu.se>
+	DESCRIPTION Singularity container SPACERANGER-3.0.1
+
+%environment
+	PATH=/opt/bin:/opt/conda/envs/ngs-tools/bin/:/opt/spaceranger-3.0.1:/opt/bin:$PATH
+
+%post
+	rm -rf /var/lib/apt/lists/*
+	apt -y clean
+	apt -y update
+	apt -y install libz-dev build-essential gettext cmake libxml2-dev libcurl4-openssl-dev libssl-dev make libbz2-dev libboost-dev python3-pip sudo unzip
+
+	mkdir -p /usr/share/man/man1
+
+	sudo apt -y install default-jre
+
+	mkdir -p /opt/bin
+
+
+	# WGET SPACERANGER v3.0.1
+	cd /opt
+	wget -O spaceranger-3.0.1.tar.gz "https://cf.10xgenomics.com/releases/spatial-exp/spaceranger-3.0.1.tar.gz?Expires=1721252831&Key-Pair-Id=APKAI7S6A5RYOXBWRPDA&Signature=nXT08nIAYgpOQykDhuLAYeM8IrwT8jyOwh6wzOpOJUzXBsR0a4NKd8No28d71GwdsGyyETPkvVaLyV8vj8nw~H9HgTZIO~ii-UeKV2dMvz5iIR938glPexBbj82SKogkZSgmlRnVdhglOUb9AZOE9~Xe~IWQsikwYZ459HU5uVg-zMZG5TnJmiwxpG5bLrfKYKyGeD523yqb79UoAITB-tJiLiRHamyyGOeUu1dQmL9ZCBaF2xyDCit5WT7dTcdJT2XUvgo9zIr~jH1Fp7zUPxGBO~dWqpU3gfaVI~0GvDx-DC6~6~nM-YQCNw4n9yiFlOtPmWUpYrkGvISNqIzzyQ__"
+	tar -xzvf spaceranger-3.0.1.tar.gz
+	cd -
